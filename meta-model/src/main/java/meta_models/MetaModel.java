@@ -7,11 +7,11 @@ public class MetaModel {
         this.context = context;
     }
 
-    protected final String joinContext(String prop) {
+    protected final String joinContext(String propName) {
         if (this.context.length() > 0) {
-            return this.context + "." + prop;
+            return this.context + "." + propName;
         }
-        return prop;
+        return propName;
     }
     
     public final String toString() {
