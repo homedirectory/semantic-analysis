@@ -11,7 +11,7 @@ public final class PersonMetaModel extends MetaModel {
     public final String age;
     public final HouseMetaModel house;
 
-    protected PersonMetaModel(String context) {
+    public PersonMetaModel(String context) {
         super(context);
         this.vehicle = new VehicleMetaModel(joinContext(vehicle_));
         this.name = joinContext(name_);
@@ -19,7 +19,7 @@ public final class PersonMetaModel extends MetaModel {
         this.house = new HouseMetaModel(joinContext(house_));
     }
 
-    protected PersonMetaModel() {
+    public PersonMetaModel() {
         this("");
     }
 }

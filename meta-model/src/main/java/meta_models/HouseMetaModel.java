@@ -7,13 +7,13 @@ public final class HouseMetaModel extends MetaModel {
     public final String area;
     public final InsuranceMetaModel insurance;
 
-    protected HouseMetaModel(String context) {
+    public HouseMetaModel(String context) {
         super(context);
         this.area = joinContext(area_);
         this.insurance = new InsuranceMetaModel(joinContext(insurance_));
     }
 
-    protected HouseMetaModel() {
+    public HouseMetaModel() {
         this("");
     }
 }

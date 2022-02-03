@@ -7,13 +7,13 @@ public final class VehicleMetaModel extends MetaModel {
     public final String color;
     public final InsuranceMetaModel insurance;
 
-    protected VehicleMetaModel(String context) {
+    public VehicleMetaModel(String context) {
         super(context);
         this.color = joinContext(color_);
         this.insurance = new InsuranceMetaModel(joinContext(insurance_));
     }
 
-    protected VehicleMetaModel() {
+    public VehicleMetaModel() {
         this("");
     }
 }

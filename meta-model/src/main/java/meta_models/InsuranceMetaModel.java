@@ -7,13 +7,13 @@ public final class InsuranceMetaModel extends MetaModel {
     public final String cost;
     public final String expirationDate;
 
-    protected InsuranceMetaModel(String context) {
+    public InsuranceMetaModel(String context) {
         super(context);
         this.cost = joinContext(cost_);
         this.expirationDate = joinContext(expirationDate_);
     }
 
-    protected InsuranceMetaModel() {
+    public InsuranceMetaModel() {
         this("");
     }
 }
