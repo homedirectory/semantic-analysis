@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UMLLabProfile="http:///schemas/UMLLabProfile/NS/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/UMLLabProfile/NS/0 pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile">
+  <uml:Model xmi:id="_xo8zIImnEey3G-NhjxoyOg" name="meta_model">
+    <eAnnotations xmi:id="_xxttkImnEey3G-NhjxoyOg" source="http://ns.yatta.de/umllab">
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_xxttkYmnEey3G-NhjxoyOg" source="codegen">
+        <details xmi:id="_xxttkomnEey3G-NhjxoyOg" key="codegenDirectory" value="/meta-model/src"/>
+        <details xmi:id="_x3rLoImnEey3G-NhjxoyOg" key="AssociatedSourceCode" value="/meta-model/src/main/java/models/Person.java;3250521608/1;/meta-model/src/main/java/models/Vehicle.java;477198028/1;/meta-model/src/main/java/models/House.java;9112089/1;/meta-model/src/main/java/models/Insurance.java;756364717/1;"/>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_x2-BAImnEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_x2-BAYmnEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+    </elementImport>
+    <elementImport xmi:id="_x2-BAomnEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
+    </elementImport>
+    <elementImport xmi:id="_x2-BA4mnEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+    </elementImport>
+    <elementImport xmi:id="_x2-BBImnEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+    </elementImport>
+    <elementImport xmi:id="_x2-BBYmnEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </elementImport>
+    <elementImport xmi:id="_x2-BBomnEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </elementImport>
+    <elementImport xmi:id="_x2-oEImnEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
+    </elementImport>
+    <elementImport xmi:id="_x2-oEYmnEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_x25vkImnEey3G-NhjxoyOg" name="main">
+      <packagedElement xmi:type="uml:Package" xmi:id="_x26WoImnEey3G-NhjxoyOg" name="java">
+        <packagedElement xmi:type="uml:Package" xmi:id="_x27kwImnEey3G-NhjxoyOg" name="models">
+          <packagedElement xmi:type="uml:Class" xmi:id="_x28y4ImnEey3G-NhjxoyOg" name="Person">
+            <ownedAttribute xmi:id="_x3MqgImnEey3G-NhjxoyOg" name="name">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_x3NRkImnEey3G-NhjxoyOg" name="age">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_x3NRkYmnEey3G-NhjxoyOg" name="vehicle" type="_x3JAIImnEey3G-NhjxoyOg" association="_x3OftYmnEey3G-NhjxoyOg"/>
+            <ownedAttribute xmi:id="_x3N4oImnEey3G-NhjxoyOg" name="house" visibility="private" type="_x3KOQImnEey3G-NhjxoyOg" association="_x3Pt0ImnEey3G-NhjxoyOg"/>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_x3OfsImnEey3G-NhjxoyOg" name="Person" specification="_x3LcYImnEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_x3OfsYmnEey3G-NhjxoyOg" name="name">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_x3OfsomnEey3G-NhjxoyOg" name="age">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_x3Ofs4mnEey3G-NhjxoyOg" name="vehicle" type="_x3JAIImnEey3G-NhjxoyOg"/>
+              <ownedParameter xmi:id="_x3OftImnEey3G-NhjxoyOg" type="_x28y4ImnEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>this.name = name;
+     this.age = age;
+     this.vehicle = vehicle;
+ </body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_x3LcYImnEey3G-NhjxoyOg" name="Person" method="_x3OfsImnEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_x3LcZImnEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_x3MDcImnEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_x3LcYYmnEey3G-NhjxoyOg" name="name">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_x3LcYomnEey3G-NhjxoyOg" name="age">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_x3LcY4mnEey3G-NhjxoyOg" name="vehicle" type="_x3JAIImnEey3G-NhjxoyOg"/>
+              <ownedParameter xmi:id="_x3MDcYmnEey3G-NhjxoyOg" type="_x28y4ImnEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_x3JAIImnEey3G-NhjxoyOg" name="Vehicle">
+            <ownedAttribute xmi:id="_zhrPUImnEey3G-NhjxoyOg" name="color">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_zhr2YImnEey3G-NhjxoyOg" name="insurance" type="_zhnk8ImnEey3G-NhjxoyOg" association="_zhvgwImnEey3G-NhjxoyOg"/>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_zhtEgImnEey3G-NhjxoyOg" name="Vehicle" specification="_zhpaIImnEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_zhtEgYmnEey3G-NhjxoyOg" name="color">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_zhtEgomnEey3G-NhjxoyOg" name="insurance" type="_zhnk8ImnEey3G-NhjxoyOg"/>
+              <ownedParameter xmi:id="_zhtEg4mnEey3G-NhjxoyOg" type="_x3JAIImnEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>this.color = color;
+     this.insurance = insurance;
+ </body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_zhpaIImnEey3G-NhjxoyOg" name="Vehicle" method="_zhtEgImnEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_zhqBMYmnEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_zhqBMomnEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_zhpaIYmnEey3G-NhjxoyOg" name="color">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_zhqBMImnEey3G-NhjxoyOg" name="insurance" type="_zhnk8ImnEey3G-NhjxoyOg"/>
+              <ownedParameter xmi:id="_zhqBM4mnEey3G-NhjxoyOg" type="_x3JAIImnEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_x3KOQImnEey3G-NhjxoyOg" name="House">
+            <ownedAttribute xmi:id="_0I8qsImnEey3G-NhjxoyOg" name="area">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_0I8qsYmnEey3G-NhjxoyOg" name="insurance" type="_zhnk8ImnEey3G-NhjxoyOg" association="_0I-f5ImnEey3G-NhjxoyOg"/>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_0I-f4ImnEey3G-NhjxoyOg" name="House" specification="_0I61gImnEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_0I-f4YmnEey3G-NhjxoyOg" name="area">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_0I-f4omnEey3G-NhjxoyOg" name="insurance" type="_zhnk8ImnEey3G-NhjxoyOg"/>
+              <ownedParameter xmi:id="_0I-f44mnEey3G-NhjxoyOg" type="_x3KOQImnEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>this.area = area;
+     this.insurance = insurance;
+ </body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_0I61gImnEey3G-NhjxoyOg" name="House" method="_0I-f4ImnEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_0I8DoImnEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_0I8DoYmnEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_0I7ckImnEey3G-NhjxoyOg" name="area">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_0I7ckYmnEey3G-NhjxoyOg" name="insurance" type="_zhnk8ImnEey3G-NhjxoyOg"/>
+              <ownedParameter xmi:id="_0I8DoomnEey3G-NhjxoyOg" type="_x3KOQImnEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_x3OftYmnEey3G-NhjxoyOg" name="" memberEnd="_x3NRkYmnEey3G-NhjxoyOg _x3PGwImnEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_x3PGwImnEey3G-NhjxoyOg" name="" type="_x28y4ImnEey3G-NhjxoyOg" association="_x3OftYmnEey3G-NhjxoyOg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_x3Pt0ImnEey3G-NhjxoyOg" name="" memberEnd="_x3Pt0YmnEey3G-NhjxoyOg _x3N4oImnEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_x3Pt0YmnEey3G-NhjxoyOg" name="" type="_x28y4ImnEey3G-NhjxoyOg" association="_x3Pt0ImnEey3G-NhjxoyOg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_zhnk8ImnEey3G-NhjxoyOg" name="Insurance">
+            <ownedAttribute xmi:id="_0duA0ImnEey3G-NhjxoyOg" name="cost" type="_0dqWcImnEey3G-NhjxoyOg"/>
+            <ownedAttribute xmi:id="_0duA0YmnEey3G-NhjxoyOg" name="expirationDate" type="_0dq9gImnEey3G-NhjxoyOg" association="_0dun5ImnEey3G-NhjxoyOg"/>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_0dun4ImnEey3G-NhjxoyOg" name="Insurance" specification="_0dsysImnEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_0dun4YmnEey3G-NhjxoyOg" name="cost" type="_0dqWcImnEey3G-NhjxoyOg"/>
+              <ownedParameter xmi:id="_0dun4omnEey3G-NhjxoyOg" name="expirationDate" type="_0dq9gImnEey3G-NhjxoyOg"/>
+              <ownedParameter xmi:id="_0dun44mnEey3G-NhjxoyOg" type="_zhnk8ImnEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>this.cost = cost;
+     this.expirationDate = expirationDate;
+ </body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_0dsysImnEey3G-NhjxoyOg" name="Insurance" method="_0dun4ImnEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_0dsys4mnEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_0dsytImnEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_0dsysYmnEey3G-NhjxoyOg" name="cost" type="_0dqWcImnEey3G-NhjxoyOg"/>
+              <ownedParameter xmi:id="_0dsysomnEey3G-NhjxoyOg" name="expirationDate" type="_0dq9gImnEey3G-NhjxoyOg"/>
+              <ownedParameter xmi:id="_0dsytYmnEey3G-NhjxoyOg" type="_zhnk8ImnEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_zhvgwImnEey3G-NhjxoyOg" name="" memberEnd="_zhr2YImnEey3G-NhjxoyOg _zhvgwYmnEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_zhvgwYmnEey3G-NhjxoyOg" name="" type="_x3JAIImnEey3G-NhjxoyOg" association="_zhvgwImnEey3G-NhjxoyOg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_0I-f5ImnEey3G-NhjxoyOg" name="" memberEnd="_0I8qsYmnEey3G-NhjxoyOg _0I_G8ImnEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_0I_G8ImnEey3G-NhjxoyOg" name="" type="_x3KOQImnEey3G-NhjxoyOg" association="_0I-f5ImnEey3G-NhjxoyOg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_0dun5ImnEey3G-NhjxoyOg" name="" memberEnd="_0duA0YmnEey3G-NhjxoyOg _0dun5YmnEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_0dun5YmnEey3G-NhjxoyOg" name="" type="_zhnk8ImnEey3G-NhjxoyOg" association="_0dun5ImnEey3G-NhjxoyOg"/>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_0djBsImnEey3G-NhjxoyOg" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_0djBsYmnEey3G-NhjxoyOg" name="math">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_0dqWcImnEey3G-NhjxoyOg" name="BigDecimal"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_0djBsomnEey3G-NhjxoyOg" name="util">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_0dq9gImnEey3G-NhjxoyOg" name="Date"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_xxuUoImnEey3G-NhjxoyOg">
+      <eAnnotations xmi:id="_xxuUoYmnEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile"/>
+    </profileApplication>
+  </uml:Model>
+  <UMLLabProfile:TargetLanguage xmi:id="_xxuUoomnEey3G-NhjxoyOg" base_Package="_xo8zIImnEey3G-NhjxoyOg">
+    <languageName>java</languageName>
+  </UMLLabProfile:TargetLanguage>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_x3N4oYmnEey3G-NhjxoyOg" base_Element="_x3N4oImnEey3G-NhjxoyOg"/>
+  <UMLLabProfile:Reference xmi:id="_x3Pt0omnEey3G-NhjxoyOg" base_Element="_x3Pt0ImnEey3G-NhjxoyOg"/>
+  <UMLLabProfile:Reference xmi:id="_0dqWcYmnEey3G-NhjxoyOg" base_Element="_0dqWcImnEey3G-NhjxoyOg"/>
+  <UMLLabProfile:Reference xmi:id="_0dq9gYmnEey3G-NhjxoyOg" base_Element="_0dq9gImnEey3G-NhjxoyOg"/>
+</xmi:XMI>

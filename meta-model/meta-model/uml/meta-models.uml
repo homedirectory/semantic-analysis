@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UMLLabProfile="http:///schemas/UMLLabProfile/NS/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/UMLLabProfile/NS/0 pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile">
+  <uml:Model xmi:id="_6a0UkImrEey3G-NhjxoyOg" name="meta_models">
+    <eAnnotations xmi:id="_6_quEImrEey3G-NhjxoyOg" source="http://ns.yatta.de/umllab">
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_6_quEYmrEey3G-NhjxoyOg" source="codegen">
+        <details xmi:id="_6_quEomrEey3G-NhjxoyOg" key="codegenDirectory" value="/meta-model/src"/>
+        <details xmi:id="_7A1ywImrEey3G-NhjxoyOg" key="AssociatedSourceCode" value="/meta-model/src/main/java/meta_models/MetaModel.java;1516491185/1;/meta-model/src/main/java/meta_models/PersonMetaModel.java;2685494141/1;/meta-model/src/main/java/meta_models/VehicleMetaModel.java;687817117/1;/meta-model/src/main/java/meta_models/InsuranceMetaModel.java;739205914/1;/meta-model/src/main/java/meta_models/HouseMetaModel.java;2972036495/1;/meta-model/src/main/java/meta_models/MetaModels.java;3098584326/1;"/>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_7AHaAImrEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_7AHaAYmrEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+    </elementImport>
+    <elementImport xmi:id="_7AHaAomrEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
+    </elementImport>
+    <elementImport xmi:id="_7AHaA4mrEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+    </elementImport>
+    <elementImport xmi:id="_7AHaBImrEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+    </elementImport>
+    <elementImport xmi:id="_7AHaBYmrEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </elementImport>
+    <elementImport xmi:id="_7AHaBomrEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </elementImport>
+    <elementImport xmi:id="_7AHaB4mrEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
+    </elementImport>
+    <elementImport xmi:id="_7AHaCImrEey3G-NhjxoyOg">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_7AFk0ImrEey3G-NhjxoyOg" name="main">
+      <packagedElement xmi:type="uml:Package" xmi:id="_7AFk0YmrEey3G-NhjxoyOg" name="java">
+        <packagedElement xmi:type="uml:Package" xmi:id="_7AGL4ImrEey3G-NhjxoyOg" name="meta_models">
+          <packagedElement xmi:type="uml:Class" xmi:id="_7AGy8ImrEey3G-NhjxoyOg" name="MetaModel">
+            <ownedAttribute xmi:id="_7AIoIomrEey3G-NhjxoyOg" name="context" visibility="private">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedAttribute>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7AJPMYmrEey3G-NhjxoyOg" name="MetaModel" specification="_7AIBEImrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_7AJPMomrEey3G-NhjxoyOg" name="context">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_7AJPM4mrEey3G-NhjxoyOg" type="_7AGy8ImrEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>this.context = context;
+ </body>
+            </ownedBehavior>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7AJPNImrEey3G-NhjxoyOg" name="joinContext" specification="_7AIBFYmrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_7AJPNYmrEey3G-NhjxoyOg" name="propName">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_7AJPNomrEey3G-NhjxoyOg" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <language>java</language>
+              <body>if (this.context.length() > 0) {
+         return this.context + &quot;.&quot; + propName;
+     }
+     return propName;
+ </body>
+            </ownedBehavior>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7AJ2QImrEey3G-NhjxoyOg" name="toString" specification="_7AIoIImrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_7AJ2QYmrEey3G-NhjxoyOg" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <language>java</language>
+              <body>return this.context;
+ </body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_7AIBEImrEey3G-NhjxoyOg" name="MetaModel" method="_7AJPMYmrEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_7AIBEomrEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_7AIBE4mrEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_7AIBEYmrEey3G-NhjxoyOg" name="context">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_7AIBFImrEey3G-NhjxoyOg" type="_7AGy8ImrEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_7AIBFYmrEey3G-NhjxoyOg" name="joinContext" visibility="protected" isLeaf="true" method="_7AJPNImrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_7AIBFomrEey3G-NhjxoyOg" name="propName">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_7AIBF4mrEey3G-NhjxoyOg" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+            </ownedOperation>
+            <ownedOperation xmi:id="_7AIoIImrEey3G-NhjxoyOg" name="toString" isLeaf="true" method="_7AJ2QImrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_7AIoIYmrEey3G-NhjxoyOg" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_7uNPEImrEey3G-NhjxoyOg" name="PersonMetaModel" isLeaf="true">
+            <generalization xmi:id="_7uY1QImrEey3G-NhjxoyOg" general="_7AGy8ImrEey3G-NhjxoyOg"/>
+            <ownedAttribute xmi:id="_7ub4kImrEey3G-NhjxoyOg" name="name_" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_7ub4kYmrEey3G-NhjxoyOg" value="&quot;name&quot;"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_7ub4komrEey3G-NhjxoyOg" name="vehicle_" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_7ucfoImrEey3G-NhjxoyOg" value="&quot;vehicle&quot;"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_7ucfoYmrEey3G-NhjxoyOg" name="age_" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_7ucfoomrEey3G-NhjxoyOg" value="&quot;age&quot;"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_7ucfo4mrEey3G-NhjxoyOg" name="house_" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_7ucfpImrEey3G-NhjxoyOg" value="&quot;house&quot;"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_7ucfpYmrEey3G-NhjxoyOg" name="name" isLeaf="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_7udGsYmrEey3G-NhjxoyOg" name="vehicle" isLeaf="true" type="_7uaDYImrEey3G-NhjxoyOg" isReadOnly="true" association="_7ue74ImrEey3G-NhjxoyOg"/>
+            <ownedAttribute xmi:id="_7udGs4mrEey3G-NhjxoyOg" name="age" isLeaf="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_7udtwYmrEey3G-NhjxoyOg" name="house" isLeaf="true" type="_7uaqcYmrEey3G-NhjxoyOg" isReadOnly="true" association="_7ue744mrEey3G-NhjxoyOg"/>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7ueU0ImrEey3G-NhjxoyOg" name="PersonMetaModel" specification="_7uPEQImrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_7ueU0YmrEey3G-NhjxoyOg" name="context">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_7ueU0omrEey3G-NhjxoyOg" type="_7uNPEImrEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>super(context);
+     this.vehicle = new VehicleMetaModel(joinContext(vehicle_));
+     this.name = joinContext(name_);
+     this.age = joinContext(age_);
+     this.house = new HouseMetaModel(joinContext(house_));
+ </body>
+            </ownedBehavior>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_7ueU04mrEey3G-NhjxoyOg" name="PersonMetaModel" specification="_7uQSYImrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_7ueU1ImrEey3G-NhjxoyOg" type="_7uNPEImrEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>this(&quot;&quot;);
+ </body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_7uPEQImrEey3G-NhjxoyOg" name="PersonMetaModel" method="_7ueU0ImrEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_7uPrUYmrEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_7uPrUomrEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_7uPrUImrEey3G-NhjxoyOg" name="context">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_7uPrU4mrEey3G-NhjxoyOg" type="_7uNPEImrEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_7uQSYImrEey3G-NhjxoyOg" name="PersonMetaModel" method="_7ueU04mrEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_7uQSYYmrEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_7uQSYomrEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_7uQ5cImrEey3G-NhjxoyOg" type="_7uNPEImrEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_7uaDYImrEey3G-NhjxoyOg" name="VehicleMetaModel" isLeaf="true">
+            <generalization xmi:id="_8CqcIImrEey3G-NhjxoyOg" general="_7AGy8ImrEey3G-NhjxoyOg"/>
+            <ownedAttribute xmi:id="_8CsRUYmrEey3G-NhjxoyOg" name="color_" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_8CsRUomrEey3G-NhjxoyOg" value="&quot;color&quot;"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_8Cs4YImrEey3G-NhjxoyOg" name="insurance_" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_8Cs4YYmrEey3G-NhjxoyOg" value="&quot;insurance&quot;"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_8Cs4YomrEey3G-NhjxoyOg" name="color" isLeaf="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_8CtfcImrEey3G-NhjxoyOg" name="insurance" isLeaf="true" type="_8CrqQImrEey3G-NhjxoyOg" isReadOnly="true" association="_8CuGgomrEey3G-NhjxoyOg"/>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_8CtfcomrEey3G-NhjxoyOg" name="VehicleMetaModel" specification="_8CljoImrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_8Ctfc4mrEey3G-NhjxoyOg" name="context">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_8CtfdImrEey3G-NhjxoyOg" type="_7uaDYImrEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>super(context);
+     this.color = joinContext(color_);
+     this.insurance = new InsuranceMetaModel(joinContext(insurance_));
+ </body>
+            </ownedBehavior>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_8CuGgImrEey3G-NhjxoyOg" name="VehicleMetaModel" specification="_8CmKsImrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_8CuGgYmrEey3G-NhjxoyOg" type="_7uaDYImrEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>this(&quot;&quot;);
+ </body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_8CljoImrEey3G-NhjxoyOg" name="VehicleMetaModel" method="_8CtfcomrEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_8CljoomrEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_8Cljo4mrEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_8CljoYmrEey3G-NhjxoyOg" name="context">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_8CljpImrEey3G-NhjxoyOg" type="_7uaDYImrEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_8CmKsImrEey3G-NhjxoyOg" name="VehicleMetaModel" method="_8CuGgImrEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_8CmxwImrEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_8CmxwYmrEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_8CmxwomrEey3G-NhjxoyOg" type="_7uaDYImrEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_7uaqcYmrEey3G-NhjxoyOg" name="HouseMetaModel" isLeaf="true">
+            <generalization xmi:id="_8igZ0ImrEey3G-NhjxoyOg" general="_7AGy8ImrEey3G-NhjxoyOg"/>
+            <ownedAttribute xmi:id="_8ihA4ImrEey3G-NhjxoyOg" name="area_" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_8ihn8ImrEey3G-NhjxoyOg" value="&quot;area&quot;"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_8ihn8YmrEey3G-NhjxoyOg" name="insurance_" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_8ihn8omrEey3G-NhjxoyOg" value="&quot;insurance&quot;"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_8ihn84mrEey3G-NhjxoyOg" name="area" isLeaf="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_8iiPAYmrEey3G-NhjxoyOg" name="insurance" isLeaf="true" type="_8CrqQImrEey3G-NhjxoyOg" isReadOnly="true" association="_8ikEMImrEey3G-NhjxoyOg"/>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_8ijdIImrEey3G-NhjxoyOg" name="HouseMetaModel" specification="_8iXP4ImrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_8ijdIYmrEey3G-NhjxoyOg" name="context">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_8ijdIomrEey3G-NhjxoyOg" type="_7uaqcYmrEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>super(context);
+     this.area = joinContext(area_);
+     this.insurance = new InsuranceMetaModel(joinContext(insurance_));
+ </body>
+            </ownedBehavior>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_8ijdI4mrEey3G-NhjxoyOg" name="HouseMetaModel" specification="_8iX28YmrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_8ijdJImrEey3G-NhjxoyOg" type="_7uaqcYmrEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>this(&quot;&quot;);
+ </body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_8iXP4ImrEey3G-NhjxoyOg" name="HouseMetaModel" method="_8ijdIImrEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_8iXP4omrEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_8iXP44mrEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_8iXP4YmrEey3G-NhjxoyOg" name="context">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_8iX28ImrEey3G-NhjxoyOg" type="_7uaqcYmrEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_8iX28YmrEey3G-NhjxoyOg" name="HouseMetaModel" method="_8ijdI4mrEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_8iYeAImrEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_8iYeAYmrEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_8iYeAomrEey3G-NhjxoyOg" type="_7uaqcYmrEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_7ue74ImrEey3G-NhjxoyOg" name="" memberEnd="_7ue74YmrEey3G-NhjxoyOg _7udGsYmrEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_7ue74YmrEey3G-NhjxoyOg" name="" type="_7uNPEImrEey3G-NhjxoyOg" association="_7ue74ImrEey3G-NhjxoyOg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_7ue744mrEey3G-NhjxoyOg" name="" memberEnd="_7ue75ImrEey3G-NhjxoyOg _7udtwYmrEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_7ue75ImrEey3G-NhjxoyOg" name="" type="_7uNPEImrEey3G-NhjxoyOg" association="_7ue744mrEey3G-NhjxoyOg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_8CrqQImrEey3G-NhjxoyOg" name="InsuranceMetaModel" isLeaf="true">
+            <generalization xmi:id="_8RosQImrEey3G-NhjxoyOg" general="_7AGy8ImrEey3G-NhjxoyOg"/>
+            <ownedAttribute xmi:id="_8RpTUImrEey3G-NhjxoyOg" name="cost_" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_8RpTUYmrEey3G-NhjxoyOg" value="&quot;cost&quot;"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_8Rp6YImrEey3G-NhjxoyOg" name="expirationDate_" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_8Rp6YYmrEey3G-NhjxoyOg" value="&quot;expirationDate&quot;"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_8Rp6YomrEey3G-NhjxoyOg" name="cost" isLeaf="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_8RqhcYmrEey3G-NhjxoyOg" name="expirationDate" isLeaf="true" isReadOnly="true">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedAttribute>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_8RrIgYmrEey3G-NhjxoyOg" name="InsuranceMetaModel" specification="_8RjzwImrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_8RrIgomrEey3G-NhjxoyOg" name="context">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_8RrIg4mrEey3G-NhjxoyOg" type="_8CrqQImrEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>super(context);
+     this.cost = joinContext(cost_);
+     this.expirationDate = joinContext(expirationDate_);
+ </body>
+            </ownedBehavior>
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_8RrIhImrEey3G-NhjxoyOg" name="InsuranceMetaModel" specification="_8Rka04mrEey3G-NhjxoyOg">
+              <ownedParameter xmi:id="_8RrIhYmrEey3G-NhjxoyOg" type="_8CrqQImrEey3G-NhjxoyOg" direction="return"/>
+              <language>java</language>
+              <body>this(&quot;&quot;);
+ </body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_8RjzwImrEey3G-NhjxoyOg" name="InsuranceMetaModel" method="_8RrIgYmrEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_8Rka0ImrEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_8Rka0YmrEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_8RjzwYmrEey3G-NhjxoyOg" name="context">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+              </ownedParameter>
+              <ownedParameter xmi:id="_8Rka0omrEey3G-NhjxoyOg" type="_8CrqQImrEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:id="_8Rka04mrEey3G-NhjxoyOg" name="InsuranceMetaModel" method="_8RrIhImrEey3G-NhjxoyOg">
+              <eAnnotations xmi:id="_8RlB4ImrEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                <details xmi:id="_8RlB4YmrEey3G-NhjxoyOg" key="create"/>
+              </eAnnotations>
+              <ownedParameter xmi:id="_8RlB4omrEey3G-NhjxoyOg" type="_8CrqQImrEey3G-NhjxoyOg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_8CuGgomrEey3G-NhjxoyOg" name="" memberEnd="_8CuGg4mrEey3G-NhjxoyOg _8CtfcImrEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_8CuGg4mrEey3G-NhjxoyOg" name="" type="_7uaDYImrEey3G-NhjxoyOg" association="_8CuGgomrEey3G-NhjxoyOg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_8ikEMImrEey3G-NhjxoyOg" name="" memberEnd="_8ikEMYmrEey3G-NhjxoyOg _8iiPAYmrEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_8ikEMYmrEey3G-NhjxoyOg" name="" type="_7uaqcYmrEey3G-NhjxoyOg" association="_8ikEMImrEey3G-NhjxoyOg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_YgYZ8ImsEey3G-NhjxoyOg" name="MetaModels">
+            <ownedAttribute xmi:id="_YgbdQImsEey3G-NhjxoyOg" name="Person" isLeaf="true" isStatic="true" type="_7uNPEImrEey3G-NhjxoyOg" isReadOnly="true" association="_YgcEUImsEey3G-NhjxoyOg">
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_YgbdQYmsEey3G-NhjxoyOg" value="new PersonMetaModel()"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_YgbdQomsEey3G-NhjxoyOg" name="Vehicle" isLeaf="true" isStatic="true" type="_7uaDYImrEey3G-NhjxoyOg" isReadOnly="true" association="_YgcrYImsEey3G-NhjxoyOg">
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_YgbdQ4msEey3G-NhjxoyOg" value="new VehicleMetaModel()"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_YgbdRImsEey3G-NhjxoyOg" name="Insurance" isLeaf="true" isStatic="true" type="_8CrqQImrEey3G-NhjxoyOg" isReadOnly="true" association="_YgcrY4msEey3G-NhjxoyOg">
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_YgbdRYmsEey3G-NhjxoyOg" value="new InsuranceMetaModel()"/>
+            </ownedAttribute>
+            <ownedAttribute xmi:id="_YgbdRomsEey3G-NhjxoyOg" name="House" isLeaf="true" isStatic="true" type="_7uaqcYmrEey3G-NhjxoyOg" isReadOnly="true" association="_YgdScYmsEey3G-NhjxoyOg">
+              <defaultValue xmi:type="uml:LiteralString" xmi:id="_YgbdR4msEey3G-NhjxoyOg" value="new HouseMetaModel()"/>
+            </ownedAttribute>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_YgcEUImsEey3G-NhjxoyOg" name="" memberEnd="_YgcEUYmsEey3G-NhjxoyOg _YgbdQImsEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_YgcEUYmsEey3G-NhjxoyOg" name="" type="_YgYZ8ImsEey3G-NhjxoyOg" association="_YgcEUImsEey3G-NhjxoyOg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_YgcrYImsEey3G-NhjxoyOg" name="" memberEnd="_YgcrYYmsEey3G-NhjxoyOg _YgbdQomsEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_YgcrYYmsEey3G-NhjxoyOg" name="" type="_YgYZ8ImsEey3G-NhjxoyOg" association="_YgcrYImsEey3G-NhjxoyOg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_YgcrY4msEey3G-NhjxoyOg" name="" memberEnd="_YgcrZImsEey3G-NhjxoyOg _YgbdRImsEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_YgcrZImsEey3G-NhjxoyOg" name="" type="_YgYZ8ImsEey3G-NhjxoyOg" association="_YgcrY4msEey3G-NhjxoyOg"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Association" xmi:id="_YgdScYmsEey3G-NhjxoyOg" name="" memberEnd="_YgdScomsEey3G-NhjxoyOg _YgbdRomsEey3G-NhjxoyOg">
+            <ownedEnd xmi:id="_YgdScomsEey3G-NhjxoyOg" name="" type="_YgYZ8ImsEey3G-NhjxoyOg" association="_YgdScYmsEey3G-NhjxoyOg"/>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_6_rVIImrEey3G-NhjxoyOg">
+      <eAnnotations xmi:id="_6_rVIYmrEey3G-NhjxoyOg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile"/>
+    </profileApplication>
+  </uml:Model>
+  <UMLLabProfile:TargetLanguage xmi:id="_6_rVIomrEey3G-NhjxoyOg" base_Package="_6a0UkImrEey3G-NhjxoyOg">
+    <languageName>java</languageName>
+  </UMLLabProfile:TargetLanguage>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_7AJPMImrEey3G-NhjxoyOg" base_Element="_7AIoIomrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_7udGsImrEey3G-NhjxoyOg" base_Element="_7ucfpYmrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_7udGsomrEey3G-NhjxoyOg" base_Element="_7udGsYmrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_7udtwImrEey3G-NhjxoyOg" base_Element="_7udGs4mrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_7udtwomrEey3G-NhjxoyOg" base_Element="_7udtwYmrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:Reference xmi:id="_7ue74omrEey3G-NhjxoyOg" base_Element="_7ue74ImrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:Reference xmi:id="_7ufi8ImrEey3G-NhjxoyOg" base_Element="_7ue744mrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_8Cs4Y4mrEey3G-NhjxoyOg" base_Element="_8Cs4YomrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_8CtfcYmrEey3G-NhjxoyOg" base_Element="_8CtfcImrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:Reference xmi:id="_8CutkImrEey3G-NhjxoyOg" base_Element="_8CuGgomrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_8RqhcImrEey3G-NhjxoyOg" base_Element="_8Rp6YomrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_8RrIgImrEey3G-NhjxoyOg" base_Element="_8RqhcYmrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_8iiPAImrEey3G-NhjxoyOg" base_Element="_8ihn84mrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_8ii2EImrEey3G-NhjxoyOg" base_Element="_8iiPAYmrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:Reference xmi:id="_8ikrQImrEey3G-NhjxoyOg" base_Element="_8ikEMImrEey3G-NhjxoyOg"/>
+  <UMLLabProfile:Reference xmi:id="_YgcEUomsEey3G-NhjxoyOg" base_Element="_YgcEUImsEey3G-NhjxoyOg"/>
+  <UMLLabProfile:Reference xmi:id="_YgcrYomsEey3G-NhjxoyOg" base_Element="_YgcrYImsEey3G-NhjxoyOg"/>
+  <UMLLabProfile:Reference xmi:id="_YgdScImsEey3G-NhjxoyOg" base_Element="_YgcrY4msEey3G-NhjxoyOg"/>
+  <UMLLabProfile:Reference xmi:id="_YgdSc4msEey3G-NhjxoyOg" base_Element="_YgdScYmsEey3G-NhjxoyOg"/>
+</xmi:XMI>
