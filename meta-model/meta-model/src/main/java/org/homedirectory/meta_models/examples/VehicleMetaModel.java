@@ -1,4 +1,6 @@
-package main.java.meta_models;
+package org.homedirectory.meta_models.examples;
+
+import org.homedirectory.meta_models.MetaModel;
 
 public final class VehicleMetaModel extends MetaModel {
     private static final String color_ = "color";

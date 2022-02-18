@@ -1,15 +1,14 @@
-package test;
+package org.homedirectory;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import org.homedirectory.meta_models.MetaModels;
+import org.junit.Test;
 
-import main.java.meta_models.MetaModels;
-
-class MetaModelsTest {
+public class MetaModelsTest {
 
     @Test
-    void test() {
+    public void test() {
         String personVehicleInsuranceCost = MetaModels.Person.vehicle.insurance.cost;
         assertEquals("vehicle.insurance.cost", personVehicleInsuranceCost);
 

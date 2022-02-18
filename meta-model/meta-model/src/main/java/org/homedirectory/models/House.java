@@ -1,5 +1,8 @@
-package main.java.models;
+package org.homedirectory.models;
 
+import org.homedirectory.annotations.GenerateMeta;
+
+@GenerateMeta
 public class House {
     private int area;
     private Insurance insurance;

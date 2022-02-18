@@ -1,8 +1,11 @@
-package main.java.models;
+package org.homedirectory.models;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.homedirectory.annotations.GenerateMeta;
+
+@GenerateMeta
 public class Insurance {
     private BigDecimal cost;
     private Date expirationDate;

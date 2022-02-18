@@ -1,4 +1,4 @@
-package main.java.meta_models;
+package org.homedirectory.meta_models;
 
 public class MetaModel {
     private String context;

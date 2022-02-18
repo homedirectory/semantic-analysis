@@ -1,6 +1,6 @@
-package main.java;
+package org.homedirectory;
 
-import main.java.meta_models.MetaModels;
+import org.homedirectory.meta_models.MetaModels;
 
 public class Main {
     public static void main(String[] args) {

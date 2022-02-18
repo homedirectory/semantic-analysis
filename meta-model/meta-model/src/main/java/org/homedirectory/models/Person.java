@@ -1,6 +1,9 @@
-package main.java.models;
+package org.homedirectory.models;
 
-public class Person {
+import org.homedirectory.annotations.GenerateMeta;
+
+@GenerateMeta
+public class Person extends TheGreatEntity {
     private String name;
     private int age;
     private Vehicle vehicle;
@@ -34,5 +37,13 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public House getHouse() {
+        return house;
+    }
+
+    public void setAge(House House) {
+        this.house = House;
     }
 }
