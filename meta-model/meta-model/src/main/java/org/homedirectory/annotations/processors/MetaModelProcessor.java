@@ -1,8 +1,6 @@
 package org.homedirectory.annotations.processors;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,39 +29,34 @@ import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
 @AutoService(Processor.class)
-@SupportedAnnotationTypes("org.homedirectory.annotations.GenerateMeta")
+@SupportedAnnotationTypes("org.homedirectory.annotations.GenerateMetaModel")
 @SupportedSourceVersion(SourceVersion.RELEASE_16)
-public class GenerateMetaProcessor extends AbstractProcessor {
+public class MetaModelProcessor extends AbstractProcessor {
+
+    private static final String PACKAGE_NAME = "org.homedirectory.meta_models";
+    private static final String META_MODEL_SUPERCLASS_SIMPLE_NAME = "MetaModel";
+    private static final String META_MODEL_NAME_SUFFIX = "MetaModel";
+    private static final String INDENT = "    ";
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         for (TypeElement annotation: annotations) {
             final Set<? extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(annotation);
+            final List<String> annotatedElementsNames = annotatedElements.stream().map(el -> el.asType().toString()).toList();
+                    
                 for (Element element: annotatedElements) {
-                    final String qualifiedName = ((TypeElement) element).getQualifiedName().toString();
+                    final String simpleName = element.getSimpleName().toString();
 
-                    List<? extends Element> allEnclosedElements = getAllEnclosedElements((TypeElement) element);
+                    final List<? extends Element> allEnclosedElements = getAllEnclosedElements((TypeElement) element);
                     final List<VariableElement> fieldElements = ElementFilter.fieldsIn(allEnclosedElements);
 
-                    final Map<String, String> fieldTypeMap = fieldElements.stream().collect(Collectors.toMap(
+                    final Map<String, String> fieldNameTypeMap = fieldElements.stream().collect(Collectors.toMap(
                             el -> el.getSimpleName().toString(), 
-                            el -> el.asType().toString()
+                            el -> el.asType().toString() // using TypeMirror here directly instead of turning it into Element
                             ));
 
-                    // test
-//                    String testText = "";
-//                    try {
-//                        writeTest(testText, "test.txt");
-//                    } catch (IOException e) {
-//                        System.out.println("IOException!!! " + e.getMessage());
-//                    }
-                    
-                    final String packageName = "org.homedirectory.meta_models";
-                    final String className = qualifiedName.substring(qualifiedName.lastIndexOf('.') + 1);
-                    
-                    final List<String> annotatedElementsNames = annotatedElements.stream().map(el -> el.toString()).toList();
                     try {
-                        writeMetaModel(packageName, className, fieldTypeMap, annotatedElementsNames);
+                        writeMetaModel(simpleName, fieldNameTypeMap, annotatedElementsNames);
                     } catch (IOException e) {
                         System.out.println("IOException!!! " + e.getMessage());
                     }
@@ -89,12 +82,14 @@ public class GenerateMetaProcessor extends AbstractProcessor {
         return enclosedElements;
     }
 
-    private void writeMetaModel(final String packageName, final String className, final Map<String, String> fieldTypeMap, final List<String> annotatedElementsNames) throws IOException {
+    private void writeMetaModel(final String className, final Map<String, String> fieldNameTypeMap, final List<String> annotatedElementsNames) throws IOException {
+        // == Class members ==
+
         List<FieldSpec> fields = new ArrayList<>();
-        for (var entry : fieldTypeMap.entrySet()) {
+
+        for (var entry : fieldNameTypeMap.entrySet()) {
             final String fieldName = entry.getKey();
             final String fieldType = entry.getValue();
-            final String fieldTypeSimpleName = fieldType.substring(fieldType.lastIndexOf(".") + 1);
 
             // private static final String NAME_ = "NAME";
             fields.add(FieldSpec.builder(String.class, fieldName + "_")
@@ -102,8 +97,10 @@ public class GenerateMetaProcessor extends AbstractProcessor {
                     .initializer("$S", fieldName)
                     .build());
 
+            // if this field's type is also annotated, then the generated field must refer to another meta-model
             if (annotatedElementsNames.contains(fieldType)) {
-                ClassName fieldTypeMetaModelName = ClassName.get(packageName, fieldTypeSimpleName + "MetaModel");
+                final String fieldTypeSimpleName = fieldType.substring(fieldType.lastIndexOf(".") + 1);
+                ClassName fieldTypeMetaModelName = ClassName.get(PACKAGE_NAME, fieldTypeSimpleName + META_MODEL_NAME_SUFFIX);
                 fields.add(FieldSpec.builder(fieldTypeMetaModelName, fieldName)
                         .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                         .build());
@@ -114,30 +111,32 @@ public class GenerateMetaProcessor extends AbstractProcessor {
             }
         }
 
+        // == Constructors ==
+
         /*
         public NAMEMetaModel(String context) {
             super(context);
-            // for each field
-            // if field type is a declared one and also annotated (with GenerateMeta)
-            this.FIELDNAME = new FIELDTYPEMetaModel(joinContext(FIELDNAME_));
-            // else
-            this.FIELDNAME = joinContext(FIELDNAME_);
+               for each field
+                   if field's type is also annotated
+                       this.FIELDNAME = new FIELDTYPENAMEMetaModel(joinContext(FIELDNAME_));
+                   else
+                       this.FIELDNAME = joinContext(FIELDNAME_);
         }
         */
         com.squareup.javapoet.MethodSpec.Builder constructorBuilder =  MethodSpec.constructorBuilder()
                 .addModifiers(Modifier.PUBLIC)
                 .addParameter(String.class, "context")
                 .addStatement("super(context)");
-//        List<CodeBlock> constructorStatements = new ArrayList<>();
+
         com.squareup.javapoet.CodeBlock.Builder constructorStatementsBuilder = CodeBlock.builder();
         
-        for (var entry : fieldTypeMap.entrySet()) {
+        for (var entry : fieldNameTypeMap.entrySet()) {
             final String fieldName = entry.getKey();
             final String fieldType = entry.getValue();
-            final String fieldTypeSimpleName = fieldType.substring(fieldType.lastIndexOf(".") + 1);
             
             if (annotatedElementsNames.contains(fieldType)) {
-                ClassName fieldTypeMetaModelName = ClassName.get(packageName, fieldTypeSimpleName + "MetaModel");
+                final String fieldTypeSimpleName = fieldType.substring(fieldType.lastIndexOf(".") + 1);
+                ClassName fieldTypeMetaModelName = ClassName.get(PACKAGE_NAME, fieldTypeSimpleName + META_MODEL_NAME_SUFFIX);
                 constructorStatementsBuilder = constructorStatementsBuilder.addStatement(
                         "this.$L = new $T(joinContext($L_))", 
                         fieldName, fieldTypeMetaModelName, fieldName 
@@ -149,9 +148,11 @@ public class GenerateMetaProcessor extends AbstractProcessor {
                         );
             }
         }
+
         constructorBuilder = constructorBuilder.addCode(constructorStatementsBuilder.build());
                 
-        // empty constructor
+        // The empty constructor
+
         /*
         public NAMEMetaModel() {
             this("");
@@ -162,26 +163,22 @@ public class GenerateMetaProcessor extends AbstractProcessor {
                 .addStatement("this(\"\")")
                 .build();
 
-        final ClassName metaModelSuperClass = ClassName.get(packageName, "MetaModel");
-        final String metaModelName = className + "MetaModel";
+        final ClassName metaModelSuperClassName = ClassName.get(PACKAGE_NAME, META_MODEL_SUPERCLASS_SIMPLE_NAME);
+        final String metaModelName = className + META_MODEL_NAME_SUFFIX;
 
         // public final class NAMEMetaModel extends MetaModel
         TypeSpec metaModel = TypeSpec.classBuilder(metaModelName)
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
-                .superclass(metaModelSuperClass)
+                .superclass(metaModelSuperClassName)
                 .addFields(fields)
                 .addMethod(constructorBuilder.build())
                 .addMethod(emptyConstructor)
                 .build();
 
-        JavaFile javaFile = JavaFile.builder(packageName, metaModel).build();
+        // == Write to file ==
+
+        JavaFile javaFile = JavaFile.builder(PACKAGE_NAME, metaModel).indent(INDENT).build();
         javaFile.writeTo(processingEnv.getFiler());
-    }
-    
-    private void writeTest(String text, String filename) throws IOException {
-        PrintWriter printWriter = new PrintWriter(new FileWriter(filename));
-        printWriter.println(text);
-        printWriter.close();
     }
 }
 

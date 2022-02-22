@@ -1,8 +1,8 @@
 package org.homedirectory.models;
 
-import org.homedirectory.annotations.GenerateMeta;
+import org.homedirectory.annotations.GenerateMetaModel;
 
-@GenerateMeta
+@GenerateMetaModel
 public class Person extends TheGreatEntity {
     private String name;
     private int age;

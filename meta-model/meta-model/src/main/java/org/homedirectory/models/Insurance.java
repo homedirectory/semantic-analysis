@@ -3,9 +3,9 @@ package org.homedirectory.models;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import org.homedirectory.annotations.GenerateMeta;
+import org.homedirectory.annotations.GenerateMetaModel;
 
-@GenerateMeta
+@GenerateMetaModel
 public class Insurance {
     private BigDecimal cost;
     private Date expirationDate;

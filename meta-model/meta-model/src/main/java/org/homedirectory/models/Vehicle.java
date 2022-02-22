@@ -1,8 +1,8 @@
 package org.homedirectory.models;
 
-import org.homedirectory.annotations.GenerateMeta;
+import org.homedirectory.annotations.GenerateMetaModel;
 
-@GenerateMeta
+@GenerateMetaModel
 public class Vehicle {
     private String color;
     private Insurance insurance;
