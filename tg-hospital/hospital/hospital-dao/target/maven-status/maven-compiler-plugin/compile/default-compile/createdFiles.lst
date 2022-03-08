@@ -1,9 +1,0 @@
-helsinki/commodities/VehicleDao.class
-helsinki/commodities/InsuranceDao.class
-helsinki/commodities/HouseDao.class
-helsinki/ioc/ApplicationServerModule$1.class
-helsinki/ioc/ApplicationServerModule$SessionCacheBuilder.class
-helsinki/filter/NoDataFilter.class
-helsinki/personnel/PersonDao.class
-helsinki/dbsetup/HibernateSetup.class
-helsinki/ioc/ApplicationServerModule.class
