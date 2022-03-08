@@ -1,0 +1,8 @@
+helsinki/dev_mod/util/DataPopulationConfig.class
+helsinki/ioc/WebApplicationServerModule.class
+helsinki/webapp/ApplicationConfiguration.class
+helsinki/dev_mod/util/PopulateDb.class
+helsinki/webapp/StartOverHttp.class
+helsinki/webapp/Start.class
+helsinki/webapp/WebUiConfig.class
+helsinki/webapp/WebUiResources.class

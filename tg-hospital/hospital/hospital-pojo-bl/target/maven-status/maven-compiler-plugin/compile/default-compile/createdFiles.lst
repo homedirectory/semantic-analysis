@@ -1,0 +1,15 @@
+helsinki/security/tokens/persistent/Person_CanSave_Token.class
+helsinki/config/Modules.class
+helsinki/personnel/Person.class
+helsinki/security/tokens/persistent/_CanReadModel_Token.class
+helsinki/config/ApplicationDomain.class
+helsinki/security/tokens/persistent/Person_CanModify_user_Token.class
+helsinki/security/tokens/persistent/_CanRead_Token.class
+helsinki/security/tokens/AppAdminModuleToken.class
+helsinki/security/SecurityTokenNodeTransformation.class
+helsinki/personnel/PersonCo.class
+helsinki/security/tokens/open_simple_master/PersonMaster_CanOpen_Token.class
+helsinki/common/exceptions/GenericApplicationException.class
+helsinki/serialisation/SerialisationClassProvider.class
+helsinki/security/tokens/persistent/Person_CanDelete_Token.class
+helsinki/security/tokens/UsersAndPersonnelModuleToken.class
