@@ -10,6 +10,8 @@ import ua.com.fielden.platform.entity.query.fluent.fetch;
 
 import java.util.Optional;
 
+import helsinki.personnel.meta.PersonMetaModel;
+import meta_models.MetaModels;
 import ua.com.fielden.platform.entity.query.model.EntityResultQueryModel;
 import ua.com.fielden.platform.error.Result;
 import ua.com.fielden.platform.security.user.User;
@@ -22,8 +24,10 @@ import ua.com.fielden.platform.utils.EntityUtils;
  *
  */
 public interface PersonCo extends IEntityDao<Person> {
+    static final PersonMetaModel Person_ = MetaModels.Person;
+    
     static final IFetchProvider<Person> FETCH_PROVIDER = EntityUtils.fetch(Person.class)
-            .with("email", "desc", "user", "title", "employeeNo", "phone", "mobile");
+            .with(Person_.email, Person_.name, Person_.age, Person_.house.toString(), Person_.vehicle.toString(), Person_.user);
     
     static final java.util.function.Supplier<Result> CURR_PERSON_IS_MISSING = () -> failure("Current person is missing.");
     static final String ERR_THERE_IS_NO_PERSON_ASSOCIATED_WITH_USER = "There is no " + Person.ENTITY_TITLE + " associated with User [%s].";
@@ -36,7 +40,7 @@ public interface PersonCo extends IEntityDao<Person> {
 
     /** Retrieves Person using its associated user. */
     default Person findPersonByUser(final User user) {
-        final EntityResultQueryModel<Person> query = select(Person.class).where().prop("user").eq().val(user).model();
+        final EntityResultQueryModel<Person> query = select(Person.class).where().prop(Person_.user).eq().val(user).model();
         return getEntityOptional(from(query).model()).orElseThrow(() -> Result.failuref(ERR_THERE_IS_NO_PERSON_ASSOCIATED_WITH_USER, user));
     }
 

@@ -2,7 +2,10 @@ package helsinki.personnel;
 
 import static ua.com.fielden.platform.reflection.TitlesDescsGetter.getEntityTitleAndDesc;
 
+import helsinki.commodities.House;
+import helsinki.commodities.Vehicle;
 import helsinki.security.tokens.persistent.Person_CanModify_user_Token;
+import ua.com.fielden.platform.annotations.GenerateMetaModel;
 import ua.com.fielden.platform.entity.ActivatableAbstractEntity;
 import ua.com.fielden.platform.entity.DynamicEntityKey;
 import ua.com.fielden.platform.entity.annotation.CompanionObject;
@@ -39,6 +42,7 @@ import ua.com.fielden.platform.utils.Pair;
 @CompanionObject(PersonCo.class)
 @DescRequired
 @DisplayDescription
+@GenerateMetaModel
 public class Person extends ActivatableAbstractEntity<DynamicEntityKey> {
 
     private static final Pair<String, String> entityTitleAndDesc = getEntityTitleAndDesc(Person.class);
@@ -51,6 +55,66 @@ public class Person extends ActivatableAbstractEntity<DynamicEntityKey> {
     @Title(value = "Email", desc = "Uniquely identifies a person.")
     @BeforeChange(@Handler(EmailValidator.class))
     private String email;
+    
+    @IsProperty
+    @MapTo
+    @Title(value = "Name")
+    private String name;
+    
+    @IsProperty
+    @MapTo
+    @Title(value = "Age")
+    private int age;
+    
+    @IsProperty
+    @MapTo
+    @Title(value = "House", desc = "A house belonging to this person")
+    private House house;
+    
+    @IsProperty
+    @MapTo
+    @Title(value = "Vehicle", desc = "A vehicle belonging to this person")
+    private Vehicle vehicle;
+
+    @Observable
+    public Person setVehicle(final Vehicle vehicle) {
+        this.vehicle = vehicle;
+        return this;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    @Observable
+    public Person setHouse(final House house) {
+        this.house = house;
+        return this;
+    }
+
+    public House getHouse() {
+        return house;
+    }
+
+    @Observable
+    public Person setAge(final int age) {
+        this.age = age;
+        return this;
+    }
+
+    public int getAge() {
+        return age;
+    }
+    
+    @Observable
+    public Person setName(final String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     @IsProperty
     @Unique
@@ -58,26 +122,6 @@ public class Person extends ActivatableAbstractEntity<DynamicEntityKey> {
     @Title(value = "User", desc = "An application user associated with the current person.")
     @SkipEntityExistsValidation(skipActiveOnly = true)
     private User user;
-
-    @IsProperty
-    @MapTo
-    @Title(value = "Title", desc = "Person's role, position or title.")
-    private String title;
-
-    @IsProperty
-    @MapTo
-    @Title(value = "Employee No", desc = "An employee number allocated to a person by their organisation.")
-    private String employeeNo;
-
-    @IsProperty
-    @MapTo
-    @Title(value = "Phone", desc = "An telephone number, usually representing a work office land line number.")
-    private String phone;
-
-    @IsProperty
-    @MapTo
-    @Title(value = "Mobile", desc = "A mobile phone number for this person.")
-    private String mobile;
 
     @Override
     @Observable
@@ -93,46 +137,6 @@ public class Person extends ActivatableAbstractEntity<DynamicEntityKey> {
 
     public String getEmail() {
         return email;
-    }
-
-    @Observable
-    public Person setMobile(final String mobile) {
-        this.mobile = mobile;
-        return this;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    @Observable
-    public Person setPhone(final String phone) {
-        this.phone = phone;
-        return this;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    @Observable
-    public Person setEmployeeNo(final String employeeNo) {
-        this.employeeNo = employeeNo;
-        return this;
-    }
-
-    public String getEmployeeNo() {
-        return employeeNo;
-    }
-
-    @Observable
-    public Person setTitle(final String title) {
-        this.title = title;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     @Override

@@ -6,10 +6,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import helsinki.commodities.House;
 import helsinki.personnel.Person;
 import ua.com.fielden.platform.basic.config.IApplicationDomainProvider;
 import ua.com.fielden.platform.domain.PlatformDomainTypes;
 import ua.com.fielden.platform.entity.AbstractEntity;
+import helsinki.commodities.Vehicle;
+import helsinki.commodities.Insurance;
 
 /**
  * A class to register domain entities.
@@ -24,6 +27,9 @@ public class ApplicationDomain implements IApplicationDomainProvider {
     static {
         entityTypes.addAll(PlatformDomainTypes.types);
         add(Person.class);
+        add(House.class);
+        add(Vehicle.class);
+        add(Insurance.class);
     }
 
     private static void add(final Class<? extends AbstractEntity<?>> domainType) {
