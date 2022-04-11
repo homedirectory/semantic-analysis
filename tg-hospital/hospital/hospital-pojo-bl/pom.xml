@@ -22,11 +22,6 @@
 		</dependency>		
 		<dependency>
 			<groupId>fielden</groupId>
-			<artifactId>platform-annotations</artifactId>
-			<version>${platform.version}</version>
-		</dependency>		
-		<dependency>
-			<groupId>fielden</groupId>
 			<artifactId>platform-annotation-processor</artifactId>
 			<version>${platform.version}</version>
 		</dependency>		

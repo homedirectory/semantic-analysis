@@ -16,6 +16,6 @@ public interface HouseCo extends IEntityDao<House> {
     static final HouseMetaModel House_ = MetaModels.House;
 
     static final IFetchProvider<House> FETCH_PROVIDER = EntityUtils.fetch(House.class).with(
-         House_.area, House_.address, House_.insurance.toString());
+         House_.area().toPath(), House_.address().toPath(), House_.insurance().toPath());
 
 }

@@ -16,6 +16,6 @@ public interface VehicleCo extends IEntityDao<Vehicle> {
     static final VehicleMetaModel Vehicle_ = MetaModels.Vehicle;
 
     static final IFetchProvider<Vehicle> FETCH_PROVIDER = EntityUtils.fetch(Vehicle.class).with(
-         Vehicle_.color, Vehicle_.cost, Vehicle_.insurance.toString());
+         Vehicle_.color().toPath(), Vehicle_.cost().toPath(), Vehicle_.insurance().toPath());
 
 }

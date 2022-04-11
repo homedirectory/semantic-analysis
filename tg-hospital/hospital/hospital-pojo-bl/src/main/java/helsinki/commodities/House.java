@@ -2,7 +2,6 @@ package helsinki.commodities;
 
 import java.math.BigDecimal;
 
-import ua.com.fielden.platform.annotations.GenerateMetaModel;
 import ua.com.fielden.platform.entity.ActivatableAbstractEntity;
 import ua.com.fielden.platform.entity.DynamicEntityKey;
 import ua.com.fielden.platform.entity.annotation.CompanionObject;
@@ -32,7 +31,6 @@ import ua.com.fielden.platform.utils.Pair;
 @DescTitle("Description")
 @DisplayDescription
 @DescRequired
-@GenerateMetaModel
 public class House extends ActivatableAbstractEntity<DynamicEntityKey> {
 
     private static final Pair<String, String> entityTitleAndDesc = TitlesDescsGetter.getEntityTitleAndDesc(House.class);

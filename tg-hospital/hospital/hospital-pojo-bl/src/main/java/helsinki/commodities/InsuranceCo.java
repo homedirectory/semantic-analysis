@@ -16,6 +16,6 @@ public interface InsuranceCo extends IEntityDao<Insurance> {
     static final InsuranceMetaModel Insurance_ = MetaModels.Insurance;
 
     static final IFetchProvider<Insurance> FETCH_PROVIDER = EntityUtils.fetch(Insurance.class).with(
-         Insurance_.cost, Insurance_.issueDate, Insurance_.expirationDate);
+         Insurance_.cost().toPath(), Insurance_.issueDate().toPath(), Insurance_.expirationDate().toPath());
 
 }

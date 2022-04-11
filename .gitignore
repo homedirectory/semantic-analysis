@@ -40,3 +40,5 @@ bin
 *.jar
 *.war
 *.ear
+
+*.sh

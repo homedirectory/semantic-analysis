@@ -5,7 +5,6 @@ import static ua.com.fielden.platform.reflection.TitlesDescsGetter.getEntityTitl
 import helsinki.commodities.House;
 import helsinki.commodities.Vehicle;
 import helsinki.security.tokens.persistent.Person_CanModify_user_Token;
-import ua.com.fielden.platform.annotations.GenerateMetaModel;
 import ua.com.fielden.platform.entity.ActivatableAbstractEntity;
 import ua.com.fielden.platform.entity.DynamicEntityKey;
 import ua.com.fielden.platform.entity.annotation.CompanionObject;
@@ -42,7 +41,6 @@ import ua.com.fielden.platform.utils.Pair;
 @CompanionObject(PersonCo.class)
 @DescRequired
 @DisplayDescription
-@GenerateMetaModel
 public class Person extends ActivatableAbstractEntity<DynamicEntityKey> {
 
     private static final Pair<String, String> entityTitleAndDesc = getEntityTitleAndDesc(Person.class);
