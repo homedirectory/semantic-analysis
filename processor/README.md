@@ -5,7 +5,7 @@ Follow instructions below for installing the annotation processor in Eclipse IDE
 
 1. Select a project that you will be installing the annotation processor for (PROJECT\_NAME-pojo-bl).
 
-2. Open *Properties* menu.
+2. Select the project in the Package Explorer and open the *Properties* menu.
 
 3. Go to *Java Compiler* > *Annotation Processing*. Enable annotation processing and enter the names for generated sources directories (with respect to the base directory of the project)
 
