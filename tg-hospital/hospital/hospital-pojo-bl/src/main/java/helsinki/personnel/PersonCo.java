@@ -4,14 +4,13 @@ import static ua.com.fielden.platform.entity.query.fluent.EntityQueryUtils.from;
 import static ua.com.fielden.platform.entity.query.fluent.EntityQueryUtils.select;
 import static ua.com.fielden.platform.error.Result.failure;
 
-import ua.com.fielden.platform.dao.IEntityDao;
-import ua.com.fielden.platform.entity.fetch.IFetchProvider;
-import ua.com.fielden.platform.entity.query.fluent.fetch;
-
 import java.util.Optional;
 
 import helsinki.personnel.meta.PersonMetaModel;
 import meta_models.MetaModels;
+import ua.com.fielden.platform.dao.IEntityDao;
+import ua.com.fielden.platform.entity.fetch.IFetchProvider;
+import ua.com.fielden.platform.entity.query.fluent.fetch;
 import ua.com.fielden.platform.entity.query.model.EntityResultQueryModel;
 import ua.com.fielden.platform.error.Result;
 import ua.com.fielden.platform.security.user.User;

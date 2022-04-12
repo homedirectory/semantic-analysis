@@ -2,6 +2,7 @@ package helsinki.commodities;
 
 import java.math.BigDecimal;
 
+import helsinki.personnel.Person;
 import ua.com.fielden.platform.entity.ActivatableAbstractEntity;
 import ua.com.fielden.platform.entity.DynamicEntityKey;
 import ua.com.fielden.platform.entity.annotation.CompanionObject;
@@ -51,6 +52,21 @@ public class Vehicle extends ActivatableAbstractEntity<DynamicEntityKey> {
     @MapTo
     @Title(value = "Insurance", desc = "Insurance issued for this vehicle")
     private Insurance insurance;
+    
+    @IsProperty
+    @MapTo
+    @Title(value = "Owner", desc = "Owner of this vehicle")
+    private Person owner;
+
+    @Observable
+    public Vehicle setOwner(final Person owner) {
+        this.owner = owner;
+        return this;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
 
     @Observable
     public Vehicle setInsurance(final Insurance insurance) {
