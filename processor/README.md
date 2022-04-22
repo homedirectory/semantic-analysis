@@ -82,30 +82,17 @@ Modify `pom.xml` file of your project by including the following:
 ## Eclipse configuration
 0. Get the prebuilt jar or build it yourself as instructed above.
 
-<br>
-
-
 1. Open Eclipse and select the project that you will be installing the annotation processor for (`[PROJECT]-pojo-bl`).
 
-<br>
-
-
 2. Select the project in the Package Explorer and open the *Properties* menu.
-
-<br>
-
 
 3. Go to *Java Compiler > Annotation Processing*. Enable annotation processing and enter the names for generated sources directories (with respect to the base directory of the project)
 
     ![annotation-processing](project-properties.png)
 
-<br>
-
 4. Go to *Factory Path*. Add the downloaded jar by clicking *Add External JARs* and selecting the file.
 
     ![factory-path](factory-path.png)
-
-<br>
 
 5. Set *Processor options* for comprehensive logging.
 
@@ -113,19 +100,11 @@ Modify `pom.xml` file of your project by including the following:
   
     Key: `projectdir` & Value: `%PROJECT.DIR%`
     
-    <br>    
-    
     *Note:* This step is necessary, since there are issues with Eclipse running the annotation processor using log4j. 
-
-<br>
 
 6. Add `target/generated-sources` directory to the build path of the project. This can be done by right-clicking on the project in the Package Explorer in Eclipse and selecting *Build Path > Use as Source Folder*.
 
-    <br>
-
     *Note:* This step might be completed automatically by Eclipse.
-    
-<br>
 
 7. Lastly, you might need to include the jar as a *library dependency in Eclipse*.
 
