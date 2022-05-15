@@ -1,4 +1,4 @@
-# Annotation Processor
+# Meta-model Annotation Processor
 
 ## Building
 Prebuilt jar can be found [here](https://github.com/homedirectory/semantic-analysis/blob/master/processor/platform-annotation-processor-metamodel-1.4.6-SNAPSHOT.jar).
@@ -12,7 +12,7 @@ mvn install:install-file -Dfile=platform-annotation-processor-metamodel-1.4.6-SN
 
 ## Maven dependency
 Add the processor as a maven dependency to your project (`{PROJECT}-pojo-bl`):
-```
+```xml
 <dependency>
   <groupId>fielden</groupId>
   <artifactId>platform-annotation-processor-metamodel</artifactId>
@@ -21,7 +21,7 @@ Add the processor as a maven dependency to your project (`{PROJECT}-pojo-bl`):
 ```
 
 You should also include the following configuration of `maven-compiler-plugin` to ensure correct location of the generated meta-models when building with maven.
-```
+```xml
 <plugin>
   <artifactId>maven-compiler-plugin</artifactId>
   <version>3.8.1</version>
@@ -71,4 +71,67 @@ You should also include the following configuration of `maven-compiler-plugin` t
     Select your project in the `Package Explorer` and open `Properties` menu. Then go to `Java Build Path > Libraries` and select `Add External JARs`.
 
     ![libraries](images/libraries.png)
+
+
+## Usage
+To get started, clean (rebuild) the project that you added the processor to in Eclipse. You should see `target/generated-sources` get populated with the generated meta-models.
+
+* For each entity annotated with `@MapEntityTo` or `@DomainEntity` (annotation that is included with the processor jar) there will be a meta-model generated that captures all fields annotated with `@IsProperty`. Take note of the generated javadoc for each property.
+* A class named `metamodels.MetaModels` will be generated that contains an instance of each active meta-model as a static field. This sole class should be used to reference any meta-model.
+* Whenever a metamodeled entity class is edited and saved, thus compiled, its meta-model and all related ones will be regenerated to reflect the last changes. Renaming and deletion of an entity is also covered.
+* If an entity should no longer be metamodeled, that is, it is either no longer annotated with the above mentioned annotations or renamed or deleted, then its meta-model is regenerated into inactive one - an abstract empty class. The corresponding field of `metamodels.MetaModels` is removed. The automatic deletion of a meta-model is not supported at the moment.
+
+The properties of an entity in a generated meta-model are accessed by methods with according names. The return type of such a method is a class implementing the `IConvertableToPath` interface that declares one method --- `String toPath()`, which returns a `String` representing the captured dot-notation. Also note that `toString()` is equivalent to `toPath()`.
+
+### Example
+```java
+public interface PersonCo extends IEntityDao<Person> {
+    static final PersonMetaModel person = MetaModels.Person;
+    
+    static final IFetchProvider<Person> FETCH_PROVIDER = EntityUtils.fetch(Person.class).with(
+            // PropertyMetaModel
+            person.name().toPath(),                         // "name"
+            person.key().toPath(),                          // "key"
+
+            // EntityMetaModel subclass
+            person.vehicle().toPath(),                      // "vehicle"
+            person.vehicle().insurance().toPath()           // "vehicle.insurance"
+            person.vehicle().insurance().number().toPath()  // "vehicle.insurance"
+
+            // returns a String, since 'this' is not a property
+            person.This()                                   // "this"
+            );
+}
+```
+
+Simplified domain schema:
+```java
+@MapEntityTo
+public class Person extends ActivatableAbstractEntity<DynamicEntityKey> {
+    @IsProperty
+    private String name;
+
+    @IsProperty
+    private Vehicle vehicle;
+}
+
+@DomainEntity
+public class Vehicle extends ActivatableAbstractEntity<DynamicEntityKey> {
+    @IsProperty
+    private Insurance insurance;
+}
+
+// either annotation works
+@DomainEntity
+@MapEntityTo
+public class Insurance extends ActivatableAbstractEntity<DynamicEntityKey> {
+    @IsProperty
+    private Long number;
+}
+```
+
+`String This()` method is included for convenience.
+
+Lastly, the class of an underlying entity can be obtained from the meta-model using `getEntityClass()`.
+
 
