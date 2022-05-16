@@ -3,15 +3,18 @@
 ## Building
 Prebuilt jar can be found [here](https://github.com/homedirectory/semantic-analysis/blob/master/processor/platform-annotation-processor-metamodel-1.4.6-SNAPSHOT.jar).
 
-### Installing the processor to local maven repository
-You can install the processor from the prebuilt jar:
+1. Checkout the `Issue-#849` branch.
+2. Step into `platform-annotation-processor/platform-annotation-processor-metamodel` and do `mvn clean install`. The processor is now installed into the local repository and the jar is built in the `target` directory.
+
+Alternatively, you can install the processor from the prebuilt jar:
 
 ```bash
 mvn install:install-file -Dfile=platform-annotation-processor-metamodel-1.4.6-SNAPSHOT.jar -DgroupId=fielden -DartifactId=platform-annotation-processor-metamodel -Dversion=1.4.6-SNAPSHOT -Dpackaging=jar
 ```
 
 ## Maven dependency
-Add the processor as a maven dependency to your project (`{PROJECT}-pojo-bl`):
+Add the processor as a maven dependency to your project (in the `{PROJECT}-pojo-bl` module):
+
 ```xml
 <dependency>
   <groupId>fielden</groupId>
@@ -21,6 +24,7 @@ Add the processor as a maven dependency to your project (`{PROJECT}-pojo-bl`):
 ```
 
 You should also include the following configuration of `maven-compiler-plugin` to ensure correct location of the generated meta-models when building with maven.
+
 ```xml
 <plugin>
   <artifactId>maven-compiler-plugin</artifactId>
@@ -39,7 +43,7 @@ You should also include the following configuration of `maven-compiler-plugin` t
 
 
 ## Eclipse configuration
-0. Get the prebuilt jar.
+0. Get the processor jar.
 
 1. Open Eclipse and select the project that you will be installing the annotation processor for (`{PROJECT}-pojo-bl`).
 
@@ -53,32 +57,26 @@ You should also include the following configuration of `maven-compiler-plugin` t
   
     Key: `projectdir` & Value: `%PROJECT.DIR%`
     
-    Note: This step is necessary, since there are issues with Eclipse writing a log file (using `log4j`) when running an annotation processor. 
+    Note: This step is necessary, since there are issues with Eclipse writing a log file using `log4j` when running an annotation processor. 
 
 
     ![annotation-processing](images/project-properties.png)
 
-5. Go to `Factory Path`. Add the downloaded jar by clicking `Add External JARs` and selecting the file.
+5. Go to `Factory Path`. Add the jar by clicking `Add External JARs` and selecting the file.
 
     ![factory-path](images/factory-path.png)
 
-6. Add `target/generated-sources` directory to the build path of the project. This can be done by right-clicking on the project in the Package Explorer in Eclipse and selecting `Build Path > Use as Source Folder`.
+6. Add `target/generated-sources` directory to the build path of the project. This can be done by right-clicking on the `target/generated-sources` directory in the Package Explorer in Eclipse and selecting `Build Path > Use as Source Folder`.
 
     Note: This step might be completed automatically by Eclipse.
 
-7. Lastly, you might (but most likely not) need to include the processor jar as a library dependency in Eclipse.
-
-    Select your project in the `Package Explorer` and open `Properties` menu. Then go to `Java Build Path > Libraries` and select `Add External JARs`.
-
-    ![libraries](images/libraries.png)
-
 
 ## Usage
-To get started, clean (rebuild) the project that you added the processor to in Eclipse. You should see `target/generated-sources` get populated with the generated meta-models.
+To get started, clean (rebuild) the project that you added the processor to in Eclipse (either with maven or Eclipse). You should see `target/generated-sources` get populated with the generated meta-models.
 
 * For each entity annotated with `@MapEntityTo` or `@DomainEntity` (annotation that is included with the processor jar) there will be a meta-model generated that captures all fields annotated with `@IsProperty`. Take note of the generated javadoc for each property.
 * A class named `metamodels.MetaModels` will be generated that contains an instance of each active meta-model as a static field. This sole class should be used to reference any meta-model.
-* Whenever a metamodeled entity class is edited and saved, thus compiled, its meta-model and all related ones will be regenerated to reflect the last changes. Renaming and deletion of an entity is also covered.
+* Whenever a metamodeled entity class is edited and saved, thus compiled, its meta-model and all related ones will be regenerated to reflect the latest changes. Renaming and deletion of an entity is also covered.
 * If an entity should no longer be metamodeled, that is, it is either no longer annotated with the above mentioned annotations or renamed or deleted, then its meta-model is regenerated into inactive one - an abstract empty class. The corresponding field of `metamodels.MetaModels` is removed. The automatic deletion of a meta-model is not supported at the moment.
 
 The properties of an entity in a generated meta-model are accessed by methods with according names. The return type of such a method is a class implementing the `IConvertableToPath` interface that declares one method --- `String toPath()`, which returns a `String` representing the captured dot-notation. Also note that `toString()` is equivalent to `toPath()`.
@@ -89,17 +87,17 @@ public interface PersonCo extends IEntityDao<Person> {
     static final PersonMetaModel person = MetaModels.Person;
     
     static final IFetchProvider<Person> FETCH_PROVIDER = EntityUtils.fetch(Person.class).with(
-            // PropertyMetaModel
+            // non-entity property type
             person.name().toPath(),                         // "name"
             person.key().toPath(),                          // "key"
 
-            // EntityMetaModel subclass
+            // entity property type
             person.vehicle().toPath(),                      // "vehicle"
             person.vehicle().insurance().toPath()           // "vehicle.insurance"
-            person.vehicle().insurance().number().toPath()  // "vehicle.insurance"
+            person.vehicle().insurance().number().toPath()  // "vehicle.insurance.number"
 
-            // returns a String, since 'this' is not a property
-            person.This()                                   // "this"
+            // absence of context
+            person.toPath()                                 // "this"
             );
 }
 ```
@@ -129,8 +127,6 @@ public class Insurance extends ActivatableAbstractEntity<DynamicEntityKey> {
     private Long number;
 }
 ```
-
-`String This()` method is included for convenience.
 
 Lastly, the class of an underlying entity can be obtained from the meta-model using `getEntityClass()`.
 
