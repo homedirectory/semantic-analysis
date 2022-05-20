@@ -1,15 +1,15 @@
 # Meta-model Annotation Processor
 
 ## Building
-Prebuilt jar can be found [here](https://github.com/homedirectory/semantic-analysis/blob/master/processor/platform-annotation-processor-metamodel-1.4.6-SNAPSHOT.jar).
+Prebuilt jar can be found [here](https://github.com/homedirectory/semantic-analysis/blob/master/processor/platform-annotation-processors-1.4.6-SNAPSHOT.jar).
 
 1. Checkout the `Issue-#849` branch.
-2. Step into `platform-annotation-processor/platform-annotation-processor-metamodel` and do `mvn clean install`. The processor is now installed into the local repository and the jar is built in the `target` directory.
+2. Step into `platform-annotation-processors` and do `mvn clean install`. The processor is now installed into the local repository and the jar is built in the `target` directory.
 
 Alternatively, you can install the processor from the prebuilt jar:
 
 ```bash
-mvn install:install-file -Dfile=platform-annotation-processor-metamodel-1.4.6-SNAPSHOT.jar -DgroupId=fielden -DartifactId=platform-annotation-processor-metamodel -Dversion=1.4.6-SNAPSHOT -Dpackaging=jar
+mvn install:install-file -Dfile=platform-annotation-processors-1.4.6-SNAPSHOT.jar -DgroupId=fielden -DartifactId=platform-annotation-processors -Dversion=1.4.6-SNAPSHOT -Dpackaging=jar
 ```
 
 ## Maven dependency
@@ -18,7 +18,7 @@ Add the processor as a maven dependency to your project (in the `{PROJECT}-pojo-
 ```xml
 <dependency>
   <groupId>fielden</groupId>
-  <artifactId>platform-annotation-processor-metamodel</artifactId>
+  <artifactId>platform-annotation-processors</artifactId>
   <version>1.4.6-SNAPSHOT</version>
 </dependency>
 ```
