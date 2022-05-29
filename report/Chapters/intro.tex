@@ -1,1 +1,102 @@
 \chapter{Introduction}
+
+\section{Domain modeling}
+Any software system aims to solve a specific task. The area surrounding this task is known as the domain of the software.
+
+\n
+
+To be able to develop software efficiently a certain kind of knowledge must be present in the mind of a programmer. In domain modeling, in particular, it is the knowledge of the domain and its conceptual schema. However, that might prove to be a daunting task for a domain of a significant size, requiring the programmer to revisit the conceptual schema by using a secondary source of knowledge, such as documentation or the program’s source code. To assist with that, IDEs with advanced features have been developed, with code auto-completion being one of the most remarkable ones. This is what we call \textit{domain discoverability}, that is, the ability to look up the domain model with its components and their structure in detail. We later show that domain discoverability can be limited by the programming language used to write the software.
+
+\n
+
+Following Brooks’s excerpt on time-sharing, which he views as an attack on the accidental difficulty that is the interruption of consciousness due to a need to call for compilation and execution, which might result in the decay of grasp of all that is going on in a complex system, we argue that the lack of efficient design-time domain discoverability tools is the same kind of difficulty with negative effects of similar nature.
+
+\n
+
+One of the desired properties of a software system is evolvability, that is, the ability to manage changes to the domain model in a reliable and efficient manner.
+
+\section{System reliability}
+
+Reliability of a software system is its ability to perform the given tasks in an expected way without causing errors. A common practice of ensuring reliability of a software system is automated testing that is performed against a running system, that is, during run-time. One of the desirable properties of software tests is high code coverage, which is a measure of the amount of the source code of a program being executed, hence covered, during testing. However, for systems of significant size, characterized by large code volume with complex structure, testing is usually a time consuming process. Moreover, no guarantees can be given that a failing test will not occur at the very end of the whole process. Therefore, it is preferable to delegate as much program validation as possible to the compiler.
+
+\section{Change management}
+
+Whenever a change is introduced to the domain model, all parts of a system that interact with the changed component must be verified and modified if necessary. While the verification part is covered by testing, the modification has to be carried out by a programmer. In order to ensure proper modification of the related components according to the latest change, a programmer must know the exact locations of those components in the system. Once again, this can be a daunting task when dealing with a large system and that is why the role of a compiler is essential, for it can inform the programmer of those places in the source code.
+
+\n
+
+However, the underlying assumption is that we program in a compile time safe manner. And, given the general purpose nature of modern programming languages, this assumption is not always true. The conceptual schema, or rather the description of the domain model, is not represented in the source code, while the actual domain model is. By description we mean metadata and its representation in the form of a meta-model of the domain.
+
+\n
+
+Metadata can be used on its own, as a standalone piece of information, "hard-coded" into the program. This proves to be unreliable, because no compile time validation can take place for "hard-coded" data. However, were the metadata used as a part of a meta-model instead, all rules of compile time validation would be applicable to it. Moreover, any change introduced to the domain model would be reflected in its meta-model. Thus it would be possible to efficiently track the related components requiring modification, thanks to the compiler.
+
+
+\n
+
+A simple example of a situation where domain model metadata is required is illustrated in the following code snippet that constructs a query to a database:
+
+\begin{minted}{java}
+String query = String.format("SELECT %s FROM customers", "name");
+\end{minted}
+
+The problem with this code is that it uses "hard-coded" metadata, making it hard to maintain and unreliable due to the reasons mentioned above. It’s easy to imagine that some time in the future the conceptual schema of the domain might change, leading to the Customer domain entity no longer having the property name, but fullName instead. Consequently, each hard-coded reference to the property name must be located and replaced.
+
+\n
+
+We argue that there is a better approach in terms of reliability and evolvability of the domain model. Consider the same example, but now involving a meta-model:
+
+\begin{minted}{java}
+String query = String.format("SELECT %s FROM customers", Customer_.name);
+\end{minted}
+
+Where \texttt{Customer\_} is the meta-model of the \texttt{Customer} domain entity. In this case, a change to the conceptual schema of the domain model will be immediately followed by an equivalent change to the meta-model, making the code above signal a compilation error of the following kind:
+"\texttt{name} cannot be resolved or is not a field".
+
+\section{Technical approach}
+
+The goal of this research is to develop a technology for compile time semantic analysis that would capture high-level meaning of the conceptual models in a form of a meta-data that could be used for maintaining the model consistency and evolvability in a compile time safe manner with provided domain discoverability features at design time.
+
+\n
+
+Taking into account the widespread adoption and use of object-oriented programming in domain-driven design, we focus on the Java programming language in particular. Since Java language specification does not define the concept of a meta-model, we provide our own implementation of the meta-model generation mechanism that is made possible due to a feature of Java – annotations, supplemented by annotation processing -- an ability to process annotations at compile time.
+
+\n
+
+The implementation we provide is designed with a particular software development technology in mind – Trident Genesis (TG). The choice was made to tightly couple the implementation and the surrounding framework (TG) in order to make the development process manageable in terms of time, and, given the experimental nature of the research, it was considered preferable to narrow down the scope of application.
+
+\n
+
+Trident Genesis (TG) is a software development technology, which has been developed by a bunch of dedicated individuals from Ukraine and Australia with a financial support of Fielden Management Services Pty. Ltd.
+
+\n
+
+TG fits well into the definition of domain-driven development, as it shares the common language of domain modeling, speaking in terms of domain entities and their relationships.
+
+\section{Structure}
+
+This work is structured in the following way: 
+
+\n
+
+Chapter 2 goes into depth about key concepts and language used throughout the paper.
+
+\n
+
+Chapter 3 discusses related work, comparing the approaches employed.
+
+\n
+
+Chapter 4 provides a detailed description of the implementation, which includes an algorithm analyzing the source code that is getting fed into the generation mechanism to produce a working meta-model.
+
+\n
+
+Chapter 5 is dedicated to the experiment description.
+
+\n
+
+Chapter 6 demonstrates the results of the experiment and draws conclusions.
+
+\n
+
+Chapter 7 discusses future work that encompasses a general framework independent approach to implementing the generation mechanism.

@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kd}{class} \PYG{n+nc}{Transformer} \PYG{p}{\PYGZob{}}
+    \PYG{n+nd}{@Deprecated}
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{boolean} \PYG{n+nf}{isTransformable}\PYG{p}{(}\PYG{n}{Item} \PYG{n}{item}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// warn: the method Transformer.isTransformable(Item) is deprecated}
+\PYG{n}{Transformer}\PYG{p}{.}\PYG{esc}{\st{isTransformale}}\PYG{p}{(}\PYG{n}{someItem}\PYG{p}{)}\PYG{p}{;}
+\end{Verbatim}
