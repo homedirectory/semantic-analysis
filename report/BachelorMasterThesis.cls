@@ -25,7 +25,31 @@
 %	CLASS DEFINITION AND PARAMETERS
 %----------------------------------------------------------------------------------------
 
+% MY CUSTOM COMMANDS
 \newcommand{\n}{\medskip}
+
+\newcommand{\mychart}[7]{
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\pgfplotsset{width=1.0\textwidth, height=0.5\textwidth}
+    \begin{axis}[symbolic x coords={Strongly Agree,Agree,Hard to tell,Disagree,Strongly Disagree},
+        xtick={Strongly Agree,Agree,Hard to tell,Disagree,Strongly Disagree},
+        xticklabel style={text height=3ex},
+        ymin=0,
+        bar width=0.08\textwidth]
+    \addplot[ybar,fill=orange] coordinates {
+    (Strongly Agree,#1)
+    (Agree,#2) 
+    (Hard to tell,#3) 
+    (Disagree,#4)
+    (Strongly Disagree,#5)
+};
+\end{axis}
+\end{tikzpicture}
+    \caption[#6]{Responses to the statement: \textbf{#7}}
+\end{figure}
+}
 
 \NeedsTeXFormat{LaTeX2e}[1996/12/01]
 \newcommand{\classname}{MastersDoctoralThesis}

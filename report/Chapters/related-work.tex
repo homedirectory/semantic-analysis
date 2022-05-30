@@ -112,6 +112,11 @@ Project Lombok provides a handful of useful additions to the java programming la
 \n
 
 Project Lombok makes use of annotation processing for the sole purpose of identifying the supported annotations, i.e., as an entry point, and, unlike the original purpose of APT, does not generate any source files. Instead it uses the internal API of java compiler (supports javac and ecj\footnote{Eclipse Compiler for Java}) to manipulate the AST. The resulting AST is then analyzed and translated into bytecode.
+\begin{figure}[ht]\centering
+    \includegraphics[scale=0.5]{images/lombok.jpg}
+    \caption{Lombok Annotation Processor modifies the AST}
+    \label{fig:lombok}
+\end{figure}
 
 \subsection{@FieldNameConstants annotation}
 One of the experimental features of Project Lombok, \texttt{@FieldNameConstants}\footnote{\url{https://projectlombok.org/features/experimental/FieldNameConstants}} annotation is used to generate an inner type that contains a string constant representing a field’s name for each field of the annotated type. This annotation is provided with some room for configuration, such as inclusion or exclusion of particular fields, capitalization of generated fields names, the name of the inner generated type, etc.
