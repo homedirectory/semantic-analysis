@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{c+cm}{/**}
+\PYG{c+cm}{     * Title: User}
+\PYG{c+cm}{     * Description: User associated with this person}
+\PYG{c+cm}{     * Type: \PYGZob{}@link User\PYGZcb{}}
+\PYG{c+cm}{     * Meta\PYGZhy{}model: \PYGZob{}@link UserMetaModel\PYGZcb{}}
+\PYG{c+cm}{     * \PYGZob{}@literal @\PYGZcb{}\PYGZob{}@link IsProperty\PYGZcb{}}
+\PYG{c+cm}{     */}
+    \PYG{k+kd}{public} \PYG{n}{UserMetaModel} \PYG{n+nf}{user}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{k}{this}\PYG{p}{.}\PYG{n+na}{user}\PYG{p}{.}\PYG{n+na}{get}\PYG{p}{();}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

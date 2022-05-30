@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n}{map}\PYG{p}{(}\PYG{n}{person} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{person}\PYG{p}{.}\PYG{n+na}{getName}\PYG{p}{());} \PYG{c+c1}{// lambda expression}
+    \PYG{n}{map}\PYG{p}{(}\PYG{n}{Person}\PYG{p}{::}\PYG{n}{getName}\PYG{p}{);}            \PYG{c+c1}{// method reference}
+\end{Verbatim}

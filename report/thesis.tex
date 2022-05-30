@@ -43,19 +43,24 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage{mathpazo} % Use the Palatino font by default
 
-\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
-
-\addbibresource{example.bib} % The filename of the bibliography
+\usepackage[backend=bibtex,style=alphabetic,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
 
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
 
 % MY CUSTOM SETTINGS
 \usepackage{minted} % code snippets
 \usepackage{soul} % strikethrough text
+\usepackage{enumitem} % formatting enumerated lists
+\usepackage{ulem} % underlining text
+\usepackage{xcolor} % text color
+
 % space between footnotes
 \setlength{\footnotesep}{0.4cm}
 % space between text body and footnotes
 \setlength{\skip\footins}{1cm}
+
+% my bibliography
+\addbibresource{./thesis.bib}
 
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
@@ -197,7 +202,7 @@ The essential complexity of software, manifested in the size of software entitie
 
 \begin{acknowledgements}
 \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-The acknowledgments and the people to thank go here, don't forget to include your project advisor\ldots
+Thanks.
 \end{acknowledgements}
 
 %----------------------------------------------------------------------------------------
@@ -274,7 +279,7 @@ The acknowledgments and the people to thank go here, don't forget to include you
 \include{Chapters/related-work}
 \include{Chapters/implementation}
 \include{Chapters/experiment}
-\include{Chapters/conclusion}
+\include{Chapters/future-work}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
@@ -292,7 +297,6 @@ The acknowledgments and the people to thank go here, don't forget to include you
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
-
 \printbibliography[heading=bibintoc]
 
 %----------------------------------------------------------------------------------------

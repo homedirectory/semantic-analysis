@@ -4,9 +4,9 @@
 
 Conceptual modeling is an integral part of system construction. A conceptual model can be defined as a skeleton of the system. In the context of information systems this term is often used interchangeably with the term "conceptual schema", which comes from the world of relational database management systems (RDBMS). Conceptual schema describes the structure of the database from a high-level perspective. More specifically, it identifies the core concepts and relationships between them. It does not, however, include any internal details about the database.
 
-For example, in a banking system domain, the conceptual schema might define concepts such as \textit{banking accounts and transactions}, as well as their relationship. One common language for expressing conceptual schemas is UML. Consider the banking example illustrated as a UML class diagram:
-
 \n
+
+For example, in a banking system domain, the conceptual schema might define concepts such as \textit{banking accounts and transactions}, as well as their relationship. One common language for expressing conceptual schemas is UML. Consider the banking example illustrated as a UML class diagram:
 
 \begin{figure}[H]\centering
     \includegraphics[scale=0.65]{images/banking.drawio.png}
@@ -17,7 +17,7 @@ Here the conceptual schema consists of two domain entities, or in other words, t
 
 \begin{figure}[H]\centering
     \includegraphics[scale=0.65]{images/banking1.drawio.png}
-    \caption{UML class diagram illustrating an additive change of the conceptual model}\label{fig:bank1}
+    \caption{UML class diagram illustrating an additive change to the conceptual model}\label{fig:bank1}
 \end{figure}
 
 \n
@@ -26,7 +26,7 @@ Modifications on a conceptual level, such as these, must be performed with cauti
 
 \begin{figure}[H]\centering
     \includegraphics[scale=0.65]{images/banking2.drawio.png}
-    \caption{UML class diagram illustrating a breaking change of the conceptual model}\label{fig:bank2}
+    \caption{UML class diagram illustrating a breaking change to the conceptual model}\label{fig:bank2}
 \end{figure}
 
 The \texttt{owner} attribute of \texttt{Account} has been replaced by \texttt{ownerName}. The \texttt{Owner} concept has also been included in the diagram to illustrate possible consequences of this modification. Given that prior to this change the \texttt{owner} attribute was referring to the \texttt{Owner} concept, some part of a system could be making use of this fact to construct a database query that searches for account owners by their date of birth. Ideally, after the modification has taken place, the system would undergo validation and any incorrectly constructed database queries would be reported. In our example one would expect the validation mechanism to report that the \texttt{Account} concept does not define an attribute \texttt{owner} of type \texttt{Owner}, requiring that part of the system to be modified accordingly to conform to latest changes.
@@ -37,7 +37,10 @@ However, the world of software systems is not perfect. Database querying mechani
 
 \section{Domain-driven design and its lingo}
 
-Domain-driven design is an approach to conceptual modeling of a specific business domain. Its main aim is construction of a domain model, which translates to a conceptual model of the domain. The fundamental assumption is that a domain consists of entities, that is, concepts, and the relationships between those entities. The term \textit{entity} is used interchangeably with the term \textit{concept}. Every entity is characterized by its \textit{properties} in the same way that every concept is characterized by its \textit{attributes}.
+Domain-driven design, a term coined by Eric Evans \cite{ddd}, is an approach to conceptual modeling of a specific business domain.
+Its main aim is construction of a domain model, which translates to a conceptual model of the domain.
+The fundamental assumption is that a domain consists of entities, that is, concepts that constitute the domain, and relationships between them. 
+The term \textit{entity} is used interchangeably with the term \textit{concept}. Every entity is characterized by its \textit{properties} in the same way that every concept is characterized by its \textit{attributes}.
 
 \section{Java programming language}
 Java is a compiled, high-level, class-based, object-oriented programming language. In practice it is often used to implement domain-driven software solutions. Domain entities are represented as Java classes, preferably as plain old Java objects (POJOs). Class fields serve as a representation of entity properties.

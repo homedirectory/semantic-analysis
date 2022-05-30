@@ -1,0 +1,31 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@Entity}
+\PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{Order} \PYG{p}{\PYGZob{}}
+    \PYG{n+nd}{@Id}
+    \PYG{k+kd}{private} \PYG{k+kt}{long} \PYG{n}{id}\PYG{p}{;}
+
+    \PYG{n+nd}{@ManyToOne}
+    \PYG{k+kd}{private} \PYG{n}{Person} \PYG{n}{customer}\PYG{p}{;}
+
+    \PYG{n+nd}{@OneToMany}
+    \PYG{k+kd}{private} \PYG{n}{Set}\PYG{o}{\PYGZlt{}}\PYG{n}{Item}\PYG{o}{\PYGZgt{}} \PYG{n}{items}\PYG{p}{;}
+
+    \PYG{k+kd}{private} \PYG{n}{BigDecimal} \PYG{n}{totalCost}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n+nd}{@StaticMetamodel}\PYG{p}{(}\PYG{n}{Order}\PYG{p}{.}\PYG{n+na}{class}\PYG{p}{)}
+\PYG{k+kd}{public} \PYG{k+kd}{abstract} \PYG{k+kd}{class} \PYG{n+nc}{Order\PYGZus{}} \PYG{p}{\PYGZob{}}
+
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{volatile} \PYG{n}{SingularAttribute}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{p}{,} \PYG{n}{Long}\PYG{o}{\PYGZgt{}} \PYG{n}{id}\PYG{p}{;}
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{volatile} \PYG{n}{SetAttribute}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{p}{,} \PYG{n}{Item}\PYG{o}{\PYGZgt{}} \PYG{n}{items}\PYG{p}{;}
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{volatile} \PYG{n}{SingularAttribute}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{p}{,} \PYG{n}{BigDecimal}\PYG{o}{\PYGZgt{}} \PYG{n}{totalCost}\PYG{p}{;}
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{volatile} \PYG{n}{SingularAttribute}\PYG{o}{\PYGZlt{}}\PYG{n}{Order}\PYG{p}{,} \PYG{n}{Person}\PYG{o}{\PYGZgt{}} \PYG{n}{customer}\PYG{p}{;}
+
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{ID} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}id\PYGZdq{}}\PYG{p}{;}
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{ITEMS} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}items\PYGZdq{}}\PYG{p}{;}
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{TOTAL\PYGZus{}COST} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}totalCost\PYGZdq{}}\PYG{p}{;}
+    \PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{String} \PYG{n}{CUSTOMER} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}customer\PYGZdq{}}\PYG{p}{;}
+
+\PYG{p}{\PYGZcb{}}
+
+\end{Verbatim}

@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{using} \PYG{n+nn}{System.Collections.Generic}\PYG{p}{;}
+
+\PYG{k}{class} \PYG{n+nc}{Program} \PYG{p}{\PYGZob{}}
+    \PYG{k}{static} \PYG{k}{void} \PYG{n+nf}{Main}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{string} \PYG{n}{s1} \PYG{p}{=} \PYG{n}{nameof}\PYG{p}{(}\PYG{n}{Program}\PYG{p}{);}                     \PYG{c+c1}{// \PYGZdq{}Program\PYGZdq{}}
+        \PYG{k+kt}{string} \PYG{n}{s2} \PYG{p}{=} \PYG{n}{nameof}\PYG{p}{(}\PYG{n}{Program}\PYG{p}{.}\PYG{n}{InstanceMethod}\PYG{p}{);}      \PYG{c+c1}{// \PYGZdq{}InstanceMethod\PYGZdq{}}
+        \PYG{k+kt}{string} \PYG{n}{s3} \PYG{p}{=} \PYG{n}{nameof}\PYG{p}{(}\PYG{n}{System}\PYG{p}{.}\PYG{n}{Collections}\PYG{p}{.}\PYG{n}{Generic}\PYG{p}{);}  \PYG{c+c1}{// \PYGZdq{}Generic\PYGZdq{}}
+        \PYG{c+c1}{// Invalid}
+        \PYG{k+kt}{string} \PYG{n}{s4} \PYG{p}{=} \PYG{n}{nameof}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{);}               \PYG{c+c1}{// Keywords not permitted}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{void} \PYG{n+nf}{InstanceMethod}\PYG{p}{()} \PYG{p}{\PYGZob{}} \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
