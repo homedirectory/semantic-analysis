@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n}{QueryModel}\PYG{o}{\PYGZlt{}}\PYG{n}{Customer}\PYG{o}{\PYGZgt{}} \PYG{n}{query} \PYG{o}{=} \PYG{n}{select}\PYG{p}{(}\PYG{n}{Customer}\PYG{p}{.}\PYG{n+na}{class}\PYG{p}{).}\PYG{n+na}{where}\PYG{p}{()}
+        \PYG{p}{.}\PYG{n+na}{prop}\PYG{p}{(}\PYG{n}{Customer\PYGZus{}}\PYG{p}{.}\PYG{n+na}{age}\PYG{p}{).}\PYG{n+na}{gt}\PYG{p}{().}\PYG{n+na}{val}\PYG{p}{(}\PYG{l+m+mi}{21}\PYG{p}{)}
+        \PYG{p}{.}\PYG{n+na}{yield}\PYG{p}{().}\PYG{n+na}{prop}\PYG{p}{(}\PYG{n}{Customer\PYGZus{}}\PYG{p}{.}\PYG{n+na}{name}\PYG{p}{)}
+        \PYG{p}{.}\PYG{n+na}{model}\PYG{p}{();}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n}{String} \PYG{n}{query} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}SELECT name FROM customers WHERE age \PYGZgt{}= 21;\PYGZdq{}}\PYG{p}{;}
+\end{Verbatim}

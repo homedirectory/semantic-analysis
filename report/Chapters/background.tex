@@ -1,12 +1,12 @@
 \chapter{Background}
+This chapter gives a comprehensive background on the fundamental concepts in order to provide a deeper understanding of the research area and prepare the reader for the discussion of related work and explanation of the implementation details.
 
 \section{Conceptual modeling of software systems}
-
-Conceptual modeling is an integral part of system construction. A conceptual model can be defined as a skeleton of the system. In the context of information systems this term is often used interchangeably with the term "conceptual schema", which comes from the world of relational database management systems (RDBMS). Conceptual schema describes the structure of the database from a high-level perspective. More specifically, it identifies the core concepts and relationships between them. It does not, however, include any internal details about the database.
+Conceptual modeling is an integral part of software construction. In software engineering field the term "conceptual schema" is often associated with the world of relational database management systems (RDBMS). A conceptual schema describes the structure of a database from a high-level perspective. More specifically, it identifies the core concepts and classifies them into tables, which contain columns that stand for the attributes of a concept. A conceptual schema does not include any internal details about a database.
 
 \n
 
-For example, in a banking system domain, the conceptual schema might define concepts such as \textit{banking accounts and transactions}, as well as their relationship. One common language for expressing conceptual schemas is UML. Consider the banking example illustrated as a UML class diagram:
+For example, in a banking system domain, the conceptual schema might define concepts such as \textit{banking accounts and transactions}, as well as their relationship. One common language for expressing conceptual schemas is UML. Consider the banking example illustrated in the following UML class diagram:
 
 \begin{figure}[H]\centering
     \includegraphics[scale=0.65]{images/banking.drawio.png}
@@ -36,18 +36,22 @@ The \texttt{owner} attribute of \texttt{Account} has been replaced by \texttt{ow
 However, the world of software systems is not perfect. Database querying mechanisms work under the assumption that their input is consistent with the actual conceptual schema. If incorrect input is supplied, it will most likely cause the system to fail when it is already running or being tested.
 
 \section{Domain-driven design and its lingo}
-
 Domain-driven design, a term coined by Eric Evans \cite{ddd}, is an approach to conceptual modeling of a specific business domain.
 Its main aim is construction of a domain model, which translates to a conceptual model of the domain.
-The fundamental assumption is that a domain consists of entities, that is, concepts that constitute the domain, and relationships between them. 
-The term \textit{entity} is used interchangeably with the term \textit{concept}. Every entity is characterized by its \textit{properties} in the same way that every concept is characterized by its \textit{attributes}.
+At the heart of domain-driven design one of the basic building blocks is an \textit{entity}, that is, a domain object defined primarily by its identity.
+We use the term \textit{entity} interchangeably with the term \textit{concept} assuming that the concept has an identity. 
+Every entity is characterized (but not necessarily identified) by its \textit{properties} in the same way that every concept is characterized by its \textit{attributes}.
 
 \section{Java programming language}
-Java is a compiled, high-level, class-based, object-oriented programming language. In practice it is often used to implement domain-driven software solutions. Domain entities are represented as Java classes, preferably as plain old Java objects (POJOs). Class fields serve as a representation of entity properties.
+Java is a compiled, high-level, class-based, object-oriented programming language.
+In practice it is often used to implement domain-driven software systems, mapping domain objects to Java classes.
+Fields of a Java class are used to represent properties of an entity.
 
-\n
-
-In contrast with other compiled languages, such as C, Java is characterized by its sophisticated run-time mechanism that provides dynamic capabilities, such as reflection and code modification. Reflection, in particular, makes metaprogramming possible, which allows the program to use other programs, itself included, as data. For example, using reflection it is possible to obtain the type of a class field by its name:
+\section{Java reflection}
+The reflection capabilities of Java are briefly discussed in this section, since they are often mentioned alongside with the terms \textit{metadata} and \textit{metaprogramming}.
+In contrast with other compiled languages, such as C, Java is characterized by its sophisticated run-time mechanism that provides dynamic capabilities, such as reflection and code modification.
+Reflection, in particular, makes metaprogramming possible, which allows the program to use other programs, itself included, as data.
+For example, using reflection it is possible to obtain the type of a class field by its name:
 
 \begin{minted}{java}
 class Person {
@@ -57,11 +61,15 @@ class Person {
 Person.class.getDeclaredField("pet").getType()); // class Animal
 \end{minted}
 
-Although this is a powerful programming technique that allows run-time type introspection to take place, it can’t be used to treat the source code of a program as data. The run-time nature of reflection means that it operates on objects constructed from compiled code, that is, the result of translation of source code into another form (bytecode). What this means is that metadata obtained by using reflection exists only at run-time of the program, therefore it is of no use at compile time.
+Although this is a powerful programming technique that allows run-time type introspection to take place, it can’t be used to treat the source code of a program as data at compile time.
+The run-time nature of reflection indicates that reflection operates on objects constructed from compiled code.
+This means that metadata obtained by using reflection exists only at run-time of the system, which is out of compiler's scope.
 
 \section{Java annotations}
-
-The Java Language Specification defines a special construct – annotations – that provides data about a program that is not part of the program itself, that is, has no direct effect on the operation of code that is annotated. Annotations may be used to provide additional information to the compiler or to be examined during run-time of the program. We focus on compile time processing of annotations. As an example, the \texttt{@Deprecated} annotation can be used to tell the compiler to generate warnings in places where the annotated element is used.
+The Java Language Specification defines a special construct – annotations – that provides data about a program that is not part of the program itself, that is, has no direct effect on the operation of code that is annotated.
+Annotations may be used to provide additional information to the compiler or to be examined during run-time of the program.
+We focus on compile time processing of annotations.
+As an example, the \texttt{@Deprecated} annotation can be used to tell the compiler to generate warnings in places where the annotated element is used.
 
 \begin{minted}[escapeinside=||]{java}
 class Transformer {
@@ -78,7 +86,6 @@ Transformer.|\st{isTransformale}|(someItem);
 The annotated method can still be used as if there was no annotation, but the warning makes it clear that the method is no longer supported and its usage is discouraged.
 
 \section{Annotation processing}
-
 Annotation processing, as its name implies, is a mechanism for processing annotations in the source code at compile time. An important distinction from the previously mentioned concept of reflection is that the input of an annotation processor is an AST\footnote{Abstract syntax tree is a tree-like data structure used by the compiler to represent the structure of program source code.} constructed from the source code.
 
 \n
