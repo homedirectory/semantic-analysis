@@ -194,7 +194,20 @@ headsepline, % Uncomment to get a line under the header
 
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-The essential complexity of software, manifested in the size of software entities, makes it a daunting task for programmers to keep comprehensive knowledge of the domain in their minds. The accidental difficulty is the lack of appropriate tools for efficient domain discoverability during design time of software systems, as well as construction of reliable and evolvable models.
+% what is the problem
+Conceptual modeling of information systems is an approach to systems analysis and design that is widely-used in the field of software engineering. Its aim is to obtain a description of the general knowledge that an information system needs to know, which is called a conceptual schema.
+Although, the information about a conceptual schema is widely used by various technologies in a programmatic way for automation of error-prone software engineering tasks, there is a lack of refined metamodeling facilities that provide domain discoverability at design time.
+% what are you doing to solve it
+In this work, we develop a technology for compile time semantic analysis that would capture the description of a conceptual schema in a form of metadata modeled in the source code.
+% what methods do you use
+We focus on the Java programming language in particular, taking advantage of the annotation processing capabilities. 
+We provide our implementation in the context of a particular framework -- Trident Genesis.
+% how do you evaluate your solution
+As a means of evaluation we employ an approach of qualitative research by conducting an experiment targeted at a focus group of software engineers.
+% the most important findings
+We demonstrate that our findings indicate a definitive improvement in domain discoverability, system reliabilty and evolvability.
+The core principles of the presented implementation lay the groundwork for a more general framework independent approach.
+
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
