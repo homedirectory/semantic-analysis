@@ -11,7 +11,6 @@
 *.script
 *.backup
 *.tex~
-*.bib~
 *.dvi
 *.bbl
 *.log
@@ -37,7 +36,6 @@ bin
 **/.DS_Store
 
 # Package Files #
-*.jar
 *.war
 *.ear
 

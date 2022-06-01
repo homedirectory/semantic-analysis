@@ -6,7 +6,7 @@ Each approach is examined from the perspective of practicality, as well as in te
 
 \section{C\# nameof}
 C\# is a programming language develop by Microsoft that is often put in comparison with Java, sharing a lot of fundamental principles.
-We inspect a particular expression that is a part of C\# language -- the \texttt{nameof} expression \cite{cSharp-nameof} -- that is used to obtain the name of a program element as a constant string.
+We inspect a particular expression that is a part of the C\# language -- the \texttt{nameof} expression \cite{cSharp-nameof} -- that is used to obtain the name of a program element as a constant string.
 The general usage of this expression is demonstarted in the following example:
 
 \begin{listing}[H]
@@ -67,7 +67,7 @@ DotNotation.Of(nameof(Book.author), nameof(Book.author.fullName));
 
 class DotNotation {
     public static string Of(params string[] names) {
-            return String.Join(".", names);
+        return String.Join(".", names);
     }
 }
 \end{minted}
