@@ -1,10 +1,10 @@
-\chapter{Introduction}
+\chapter{Introduction}\label{chap:intro}
 
 % object, area, goal
 An important piece of work in the information systems field by Antoni Olive \cite{CMofIS} defines the term \textit{conceptual modeling} as the activity of describing and structuring the general knowledge a particular information system needs to know.
 The main objective of conceptual modeling is to obtain that description, which is called a \textit{conceptual schema}.
 Conceptual modeling is an important part of requirements engineering, the first and most important phase in the development of an information system.
-However, any information system will invariably undergo modification, either due to the demands of its users or as a result of a change in the nature of the information itself or for other reasons.
+However, any information system will invariably undergo modification, either due to the demands of its users or as a result of a change in the nature of the information itself, or for other reasons.
 Therefore, one of the most important properties of information systems is evolvability.
 
 \n
@@ -12,7 +12,7 @@ Therefore, one of the most important properties of information systems is evolva
 %It is often the case that a description of a conceptual schema needs to be represented in a system. 
 %However, not in the form of source code, but contained in the source code.
 An ability to access and process the information about a conceptual schema programmatically at runtime is widely used by various technologies for automation of otherwise complex and error-prone software engineering tasks.
-For example, Object-Relational Mapping (ORM)\footnote{Object-Relational Mapping is a technique used to interact with a database through an interface in object-oriented paradigm.} technologies automate mapping between two representations of a conceptual schema: expressed in OOP terms as classes and expressed in terms of a relational database.
+For example, Object-Relational Mapping (ORM)\footnote{Object-Relational Mapping is a technique used to interact with a database through an interface implemented in object-oriented paradigm.} technologies automate mapping between two representations of a conceptual schema: expressed in OOP terms as classes and expressed in terms of a relational database.
 This information is a structured representation of a conceptual schema, which we shall refer to as \textit{meta-model}.
 Although accessible at runtime, such meta-models also need to be made available to software engineers at design time.
 The information provided by meta-model is called \textit{metadata}.
@@ -41,8 +41,7 @@ We later show that domain discoverability can be limited by the programming lang
 
 \n
 
-% rewrite in terms of conceptual modeling of information systems + a constant need for change
-Efficient software engineering requires a certain kind of knowledge to be present in the mind of a software engineer. 
+Efficient software construction requires a certain kind of knowledge to be present in the mind of a software engineer. 
 Peter Naur \cite{naur} conveyed an insightful idea of Theory Building View of programming, stating that a program is a shared mental construct that lives in the minds of the people who work on it.
 Therefore, the programmer possessing the theory is able to respond constructively to any demand for a modification of the program.
 The same can be said about domain modeling where the general knowledge of the domain needs to be present at all times in order to develop correct models.
@@ -53,9 +52,9 @@ In order to tackle this difficulty many supporting tools have been developed. Fo
 
 Brooks \cite{brooks} defines two kinds of complexity involved in the process of software construction: essential and accidental.
 Essential complexity stems from the inherent properties of software, such as the size of software systems, conformity to other interfaces, changeability and invisibility (inability to be visualized).
-Accidental complexity is manifested in any activity that engages in representation of conceputal software structures in programming languages and mapping of those structures onto machine languages within space and speed constraints.
+Accidental complexity is manifested in any activity that engages in representation of conceptual software structures in programming languages and mapping of those structures onto machine languages within space and speed constraints.
 Among past breakthroughs in solving accidental difficulties are: high-level programming languages, time-sharing systems and unified programming environments.
-Following Brooks’s excerpt on time-sharing which he views as an attack on a specific accidental difficulty -- interruption of consciousness due to a need to call for compilation and execution, which might result in the decay of grasp of all that is going on in a complex system -- our main hypothesis is that the lack of programming language-level metamodeling facilities with advanced design-time domain discoverability features is the same kind of difficulty with negative effects of similar nature.
+Following Brooks’s excerpt on time-sharing which he views as an attack on a specific accidental difficulty -- interruption of consciousness due to a need to call for compilation and execution, which might result in the decay of grasp of all that is going on in a complex system -- our main hypothesis is that the lack of programming language-level metamodeling facilities with advanced design time domain discoverability features is the same kind of difficulty with negative effects of similar nature.
 
 \section{System reliability}
 % informal reasoning, cite Out of the Tar Pit
@@ -65,7 +64,7 @@ Moseley \& Marks \cite{moseley} identified two widely-used approches to understa
 Informal reasoning is an attempt to understand the system by examining it from the inside.
 Its importance was explained by Moseley \& Marks by the fact that improvements in informal reasoning lead to \textit{less errors being created}, as opposed to improvements in testing that lead only to \textit{more errors being detected}.
 One of the desirable properties of testing is high code coverage, which is a measure of the amount of source code of a program that was executed, hence covered, during testing.
-However, for systems of significant size, characterized by large code volume with complex structure, testing is usually a time consuming process.
+However, for systems of significant size, characterized by large code volume with complex structure, testing is usually a time-consuming process.
 No guarantees can be given that a failing test will not occur at the very end of the whole process.
 Because of this, understanding systems through testing is also more time-consuming.
 Therefore, it is preferable to focus on ways of improving informal reasoning.
@@ -93,8 +92,8 @@ Once again, this can be a difficult task when working with a large system and th
 The underlying assumption is that software is being developed in a compile time safe manner.
 However, given the general purpose nature of modern programming languages, this assumption is not always true.
 There is a lack of a language-level abstraction that could be used as domain model metadata, that carries type information, to reference the conceptual model.
-This limitation forces software engineers to use textual string representations instead that are "hard-coded" into the program.
-This is known to be unreliable because a compiler can't validate the contents of a string, thus a program deemed valid by a compiler might contain incorrect metadata that results in a runtime error.
+This limitation forces software engineers to use textual string representations instead, that are "hard-coded" into the program.
+This is known to be unreliable because it is not the responsibility of a compiler to validate the contents of a string. A program deemed valid by a compiler might make use of incorrect metadata that results in a runtime error.
 Although, were the metadata represented in the form of a meta-model instead, all rules of compile time validation would be applicable to it.
 Moreover, any modification to the domain model would be reflected in the meta-model.
 Therefore, it would be possible to efficiently track the related components in need of modification at design time due to messages signaled by a compiler.
@@ -102,7 +101,7 @@ Therefore, it would be possible to efficiently track the related components in n
 \n
 
 To illustrate a possible case where a meta-model might be required we provide the following example.
-A simple example of a situation where domain model metadata is required is illustrated in the following code snippet that constructs a query to a database:
+Consider a simplified domain that consits of a single concept called \texttt{Customer}:
 
 \begin{listing}[H]
     \begin{minted}{java}
@@ -111,10 +110,11 @@ A simple example of a situation where domain model metadata is required is illus
         private int age;
     }
     \end{minted}
-    \caption{A java class for a \texttt{Customer} concept.}
+    \caption{A java class for the \texttt{Customer} concept.}
     \label{lst:intro-customer}
 \end{listing}
 
+The following listing illustrates the construction of a database query to fetch all customers who are over 21:
 
 \begin{listing}[H]
     \begin{minted}{java}
@@ -124,17 +124,17 @@ A simple example of a situation where domain model metadata is required is illus
     \label{lst:intro-sql-raw}
 \end{listing}
 
-The problem with this code is that it uses "hard-coded" metadata.
-A compiler can't tell whether \texttt{name} is a part of the \texttt{Customer} concept.
+The problem with this code is that it uses hard-coded metadata.
+A compiler can't tell whether \texttt{name} and \texttt{age} are parts of the \texttt{Customer} concept.
 It also has no way of verifying whether \texttt{customers} is a valid database table.
 As a result, this code is unreliable and difficult to maintain.
-It is easy to imagine that some time in the future the conceptual schema might change leading to the \texttt{Customer} concept no longer having the attribute \texttt{name}, but \texttt{fullName} instead.
+It is easy to imagine that some time in the future the conceptual schema might change, leading to the \texttt{Customer} concept no longer having the attribute \texttt{name}, but \texttt{fullName} instead.
 Consequently, each such occurence of hard-coded metadata must be manually located throughout the whole system.
 
 \n
 
-It is true that using raw strings to construct SQL queries is a bad practice and alternative approaches have been developed, such as ORM frameworks.
-However, the core issue still remains unsolved, as demonstrated by the following example.
+It is true that using raw strings to construct SQL queries is a bad practice and better approaches have been developed, such as ORM frameworks.
+However, the core issue still remains, as demonstrated by the following example:
 
 \begin{listing}[H]
     \begin{minted}{java}
@@ -143,7 +143,7 @@ However, the core issue still remains unsolved, as demonstrated by the following
         .yield().prop("name")
         .model();
     \end{minted}
-    \caption{SQL query from \ref{lst:intro-sql-raw} expressed using an ORM framework.}
+    \caption{SQL query from Listing \ref{lst:intro-sql-raw} expressed using an ORM framework.}
     \label{lst:intro-eql}
 \end{listing}
 
@@ -160,13 +160,46 @@ Now, consider an approach utilizing a meta-model:
         .yield().prop(Customer_.name)
         .model();
     \end{minted}
-    \caption{SQL query from \ref{lst:intro-eql} using a meta-model.}
+    \caption{SQL query from Listing \ref{lst:intro-eql} using a meta-model.}
     \label{lst:intro-sql-meta}
 \end{listing}
 
 Here \texttt{Customer\_} is a meta-model class. 
 It guarantees that the database query is constructed in a compile time safe manner, since a change to the domain model is immediately reflected in the meta-model.
-In case a breaking change took place, an appropriate compilation error would follow.
+It also makes the system more evolvable. In case a breaking change took place, an appropriate compilation error would follow.
+
+\n
+
+Ideally, a meta-model would also capture the relationships between concepts, allowing the software engineer to traverse the domain graph in the source code.
+Expanding the previous example, consider a new concept called \texttt{Order} and its relationship to \texttt{Customer}:
+
+\begin{listing}[H]
+    \begin{minted}{java}
+    class Order {
+        private int number;
+    }
+
+    class Customer {
+        private String name;
+        private int age;
+        private Order order;
+    }
+    \end{minted}
+    \caption{A java class for the \texttt{Order} concept.}
+    \label{lst:intro-order}
+\end{listing}
+
+Then, the relationship between \texttt{Order} and \texttt{Customer} could be captured by a meta-model:
+
+\begin{listing}[H]
+    \begin{minted}{java}
+        String path = Customer_.order.number; // "order.number"
+    \end{minted}
+    \caption{A meta-model capturing the relationship between \texttt{Customer} and \texttt{Order}.}
+    \label{lst:intro-customer-order}
+\end{listing}
+
+This would make a powerful addition to the domain modeling capabilities of a programming language.
 
 \section{Technical approach}
 Taking into account the widespread adoption and use of object-oriented programming in domain-driven design, we focus on the Java programming language in particular.
@@ -175,13 +208,12 @@ The implementation is based on a feature of Java -- annotations, supplemented by
 
 \n
 
-The implementation we provide is designed with a particular software development technology in mind – Trident Genesis (TG). The choice was made to integrate the implementation with the surrounding framework in order to make the development process manageable in terms of time, and, given its experimental nature, it was preferable to narrow down the scope of application, while making it practical. This choice does not invalidate a general nature of the research.
-
-\n
-Trident Genesis (TG) is a software development technology, which has been developed by Fielden Management Services Pty. Ltd (Australia).
+The implementation we provide is designed with a particular software development technology in mind – Trident Genesis\footnote{Trident Genesis Github page -- \url{https://github.com/fieldenms/tg}} (TG). The choice was made to integrate the implementation with the surrounding framework in order to make the development process manageable in terms of time, and, given its experimental nature, it was preferable to narrow down the scope of application, while making it practical. This choice does not invalidate a general nature of the research.
 
 \n
 
+Trident Genesis is a software development technology, which has been developed by Fielden Management Services Pty. Ltd (Australia).
+It aims to tackle the core problems of systems analysis and design that are often associated with building sophisticated transactional business information systems.
 TG fits well into the definition of domain-driven development, as it shares the common language of domain modeling, speaking in terms of domain entities and their relationships.
 
 \section {Qualitative research}

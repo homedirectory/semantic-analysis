@@ -1,8 +1,13 @@
-\chapter{Related work}
-What follows is the discussion of existing approaches that are related to the objectives of this research.
+\chapter{Related work}\label{chap:relwork}
+This chapter contains an overview of existing approaches and examines the extent to which they might be used to achieve the objectives of this research.
+The scope of related work was not limited to the programming language used in the implementation.
+Given the dominance of Java in the field of software engineering, most of the related work presented in this chapter is naturally associated with it.
+Each approach is examined from the perspective of practicality, as well as in terms of the ability to reach the stated objectives.
 
 \section{C\# nameof}
-C\# has a \texttt{nameof} expression \cite{cSharp-nameof} that is used to obtain the name of a program element as a constant string.
+C\# is a programming language develop by Microsoft that is often put in comparison with Java, sharing a lot of fundamental principles.
+We inspect a particular expression that is a part of C\# language -- the \texttt{nameof} expression \cite{cSharp-nameof} -- that is used to obtain the name of a program element as a constant string.
+The general usage of this expression is demonstarted in the following example:
 
 \begin{listing}[H]
     \begin{minted}{csharp}
@@ -19,12 +24,13 @@ C\# has a \texttt{nameof} expression \cite{cSharp-nameof} that is used to obtain
         void InstanceMethod() { }
     }
     \end{minted}
-    \caption{Example of \texttt{nameof} expression in C\#.}
+    \caption{Usage of \texttt{nameof} expression in C\#.}
     \label{lst:csharp-nameof}
 \end{listing}
 
-% TODO
-The result of the \texttt{nameof} expression is evaluated at compile time, meaning that \texttt{nameof(x)} if \texttt{x} is legal input is replaced by \texttt{"x"} in the resulting bytecode of the program. Our interest is drawn, however, to the use of property literals as string constants. And indeed nameof accepts class properties as input:
+Result of the \texttt{nameof} expression is evaluated at compile time.
+This means that \texttt{nameof(x)} is replaced by \texttt{"x"} in the compiled code, given that \texttt{x} is a legal input.
+Our interest is drawn, however, to the use of \textit{property literals}\footnote{A literal in programming is a notation used to for representing a fixed value in the source code. For example, 5 is a literal, "abc" is also a literal, but a variable name is not.} as string constants. And, indeed, \texttt{nameof} accepts class properties as input:
 
 \begin{minted}{csharp}
 class Book {
@@ -69,7 +75,7 @@ class DotNotation {
 \texttt{Book.author.fullName} is used instead of simply \texttt{Author.fullName} to satisfy the compile time safety requirement. If the latter was used and the conceptual schema was changed leading to the type of \texttt{Book.author} not being \texttt{Author} anymore, but instead a value object or another entity that doesn’t have the property \texttt{fullName}, a runtime error would occur at the moment of the dot-notation being used (to fetch some data from a database, for example). Consequently, this results in an unintuitive and overly verbose code.
 
 \section{Java nameof hack}
-While the Java programming language specification does not define property literals or an expression similar to that of C\# \texttt{nameof}, there are 3rd party libraries \cite{nameof-strange} \cite{nameof-mobius} that attempt to achieve the desired result by means of byte-code manipulation through the use of method references
+While the Java programming language specification does not define property literals or an expression similar to that of C\# \texttt{nameof}, there are 3rd party libraries \cite{nameof-strange} \cite{nameof-mobius} that attempt to achieve the desired result by means of byte-code manipulation through the use of method references. What follows is a brief overview of the concepts of method references and reflection in Java.
 
 \subsection{Method references}
 Java has a special syntax for referring to a method of a class as if it was a lambda expression. Consider the following example: 
@@ -164,45 +170,50 @@ However, the approach employed by Project Lombok is certainly a unique and inspi
 Hibernate is an implementation for the JPA\footnote{Java Persistence API (renamed to Jakarta Persistence)} \cite{jpa}. Hibernate Metamodel Generator \cite{hmg} is an annotation processing tool that is a part of the Hibernate ORM framework.
 It automates the generation of static entity meta-models used for typesafe Criteria queries as defined by the JPA 2.
 The queries benefit from the meta-models by being able to be constructed in a strongly-typed manner, thus avoiding the risks of type casting the result of a query.
-Consider the following example:
+Consider the following example which shows a meta-model generated for the \texttt{Order} entity:
 
-\begin{minted}{java}
-@Entity
-public class Order {
-    @Id
-    private long id;
+\begin{listing}[H]
+    \begin{minted}{java}
+    @Entity
+    public class Order {
+        @Id
+        private long id;
 
-    @ManyToOne
-    private Person customer;
+        @ManyToOne
+        private Person customer;
 
-    @OneToMany
-    private Set<Item> items;
+        @OneToMany
+        private Set<Item> items;
 
-    private BigDecimal totalCost;
-}
+        private BigDecimal totalCost;
+    }
+    \end{minted}
+    \caption{Java class modeling the \texttt{Order} entity.}\label{lst:hibernate1}
+\end{listing}
 
-@StaticMetamodel(Order.class)
-public abstract class Order_ {
+\begin{listing}[H]
+    \begin{minted}{java}
+    @StaticMetamodel(Order.class)
+    public abstract class Order_ {
 
-    public static volatile SingularAttribute<Order, Long> id;
-    public static volatile SetAttribute<Order, Item> items;
-    public static volatile SingularAttribute<Order, BigDecimal> totalCost;
-    public static volatile SingularAttribute<Order, Person> customer;
+        public static volatile SingularAttribute<Order, Long> id;
+        public static volatile SetAttribute<Order, Item> items;
+        public static volatile SingularAttribute<Order, BigDecimal> totalCost;
+        public static volatile SingularAttribute<Order, Person> customer;
 
-    public static final String ID = "id";
-    public static final String ITEMS = "items";
-    public static final String TOTAL_COST = "totalCost";
-    public static final String CUSTOMER = "customer";
+        public static final String ID = "id";
+        public static final String ITEMS = "items";
+        public static final String TOTAL_COST = "totalCost";
+        public static final String CUSTOMER = "customer";
 
-}
+    }
+    \end{minted}
+    \caption{Hibernate meta-model for the \texttt{Order} entity.}\label{lst:hibernate2}
+\end{listing}
 
-\end{minted}
-
-What stands out is that, apart from the property names, the generated meta-model also captures information about property types, providing an ability to use them in a compile time safe manner. However, since this tool was specifically designed to assist with constructing Criteria queries, its area of application is to some extent bound to the JPA specifications. More specifically, those members of the generated meta-model that capture the property type as a generic type parameter (the first four in the example) are a part of the JPA, hence the tightly coupled implementation.
+What stands out is that, apart from the property names, the generated meta-model also captures information about property types, providing an ability to use them in a compile time safe manner.
+Therefore, this approach could find more interesting uses than the previous ones.
 
 \n
 
-The major limitation of Hibernate meta-models is that their use for other, JPA unrelated, purposes will most likely end up being as effective as the previously mentioned approach of Project Lombok, thus being subject to the same constraints.
-
-
-%\end{relatedwork}
+The major limitation of Hibernate meta-models is that they are not designed for traversing an entity graph deeper than a single level. That is, the modeling technique of entity relationships is not advanced enough.

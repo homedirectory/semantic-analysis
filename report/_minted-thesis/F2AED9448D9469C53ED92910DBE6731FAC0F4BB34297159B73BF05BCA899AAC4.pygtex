@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n+nd}{@Entity}
+    \PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{Order} \PYG{p}{\PYGZob{}}
+        \PYG{n+nd}{@Id}
+        \PYG{k+kd}{private} \PYG{k+kt}{long} \PYG{n}{id}\PYG{p}{;}
+
+        \PYG{n+nd}{@ManyToOne}
+        \PYG{k+kd}{private} \PYG{n}{Person} \PYG{n}{customer}\PYG{p}{;}
+
+        \PYG{n+nd}{@OneToMany}
+        \PYG{k+kd}{private} \PYG{n}{Set}\PYG{o}{\PYGZlt{}}\PYG{n}{Item}\PYG{o}{\PYGZgt{}} \PYG{n}{items}\PYG{p}{;}
+
+        \PYG{k+kd}{private} \PYG{n}{BigDecimal} \PYG{n}{totalCost}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

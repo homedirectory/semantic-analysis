@@ -1,4 +1,4 @@
-\chapter{Evaluation}
+\chapter{Evaluation}\label{chap:eval}
 
 Evaluation of the developed technology was conducted in the form of an experiment.
 The motivation behind this choice was the desire to assess the extent to which all stated objectives were achieved.
@@ -20,37 +20,59 @@ What follows is a display of responses, accompanied by selected comments that co
 
 \pagebreak
 \section{Discoverability of the domain model}
-Figure \ref{fig:q1} shows that all respondents recognize the improvements in domain discoverability.
-Several comments show an appreciation for the generated javadoc for entity properties, implying that it leads to an increase in the development pace.
+\noindent Figure \ref{fig:q1} shows that all respondents recognize the improvements in domain discoverability.
+Several comments show an appreciation for the generated javadoc for entity properties, implying that it has led to an increase in the development pace.
 \mychart{5}{2}{0}{0}{0}{Question 1: Domain discoverability}{The information provided by meta-models in the form of javadoc combined with the IDE’s code auto-completion feature made domain discoverability more efficient.}{q1}
 
-One of the 
+\noindent Figure \ref{fig:q2} shows that the need for repetitive context switching was effectively eliminated with the introduction of meta-models.
+One participant commented that he was particulary annoyed in the past by the need for context switching.
+However, several other comments indicate that it was occasionally necessary to switch to the definition of an underlying entity to further discover additional information that is out of scope of the meta-model.
 \mychart{5}{2}{0}{0}{0}{Question 2: Domain discoverability}{When attempting to refer to a property of an entity using a meta-model, there was no need for context switching, i.e., opening an entity class and looking for the property definition.}{q2}
 
+\noindent The opinions vary in regards to whether meta-model conveys enough information about the underlying domain entities, as illustrated by Figure \ref{fig:q3}.
+One comment suggested an idea that a meta-model could contain the database representation of its underlying entity (e.g. table name and columns data types).
 \mychart{0}{2}{3}{1}{1}{Question 3: Domain discoverability}{The generated meta-models could contain more information about their underlying entities.}{q3}
 
 \section{Reliability}
-
+\noindent Figure \ref{fig:q4} shows that all participants are in agreement about reliability of the meta-models.
+Several comments identified improvement areas for the meta-model.
+One participant suggested that it would be practical to to allow external properties (represented by String objects) to be inserted into the dot-notated path of a meta-model.
+Another participant identified a limitation of the meta-model in the fact that it can not be used in annotations, that is, as a constant value at compile time.
+We address these ideas in Chapter \ref{chap:cncls-ftr} in the discussion of future work.
 \mychart{4}{3}{0}{0}{0}{Question 4: Reliability}{Usage of the generated meta-models proved to be a reliable way of referencing properties of an entity, i.e., there were no occurrences of runtime errors.}{q4}
 
 \section{Evolvability}
-
+\noindent Figure \ref{fig:q5} shows that most respondents acknowledge that system evolvability has improved with the introduction of meta-models.
 \mychart{4}{2}{1}{0}{0}{Question 5: Evolvability}{Evolvability of a system against modifications to the conceptual model increased due to compile-time validation in places where the generated meta-models were referenced.}{q5}
 
 \section{Performance}
-
-\mychart{5}{2}{0}{0}{0}{Question 6: Performance}{Impact of the meta-model generation process on performance of the IDE during compilation has been insignificant to the development process.}{q6}
+\noindent Figure \ref{fig:q6} shows that the impact on performance of an IDE was not of a noticable significance.
+Two participants commented that even for relatively large domains the generation process was very fast.
+One of the "Hard to tell" answers was followed by a comment that more time is needed to asssess this aspect.
+\mychart{5}{0}{2}{0}{0}{Question 6: Performance}{Impact of the meta-model generation process on performance of the IDE during compilation has been insignificant to the development process.}{q6}
 
 \section{Correctness of the generation mechanism}
+\noindent Figure \ref{fig:q7} shows that most participants agree that the generated meta-models were correctly reflecting the additive changes to the domain model.
+Several comments, however, state that more time is required for evaluation of this aspect, since addition of an entity is not a common occurence.
 \mychart{4}{2}{1}{0}{0}{Question 7: Correctness}{The meta-model generation mechanism was always correctly generating meta-models for newly added entities.}{q7}
 
+\noindent Figures \ref{fig:q8} and \ref{fig:q9} show that modifications of existing entities were successfully reflected in the generated meta-models.
+Both also share similar comments that express the need for more time for evaluaton.
 \mychart{4}{2}{1}{0}{0}{Question 8: Correctness}{The meta-model generation mechanism was acting correctly in response to the renaming / deletion of an entity.}{q8}
 
-\mychart{5}{2}{0}{0}{0}{Question 9: Domain discoverability}{The meta-model generation mechanism was always correctly adapting the latest modifications to the conceptual model.}{q9}
+\mychart{5}{2}{0}{0}{0}{Question 9: Correctness}{The meta-model generation mechanism was always correctly adapting the latest modifications to the conceptual model.}{q9}
 
 \section{Intuitiveness and ease of use}
+\noindent Responses illustarted by Figure \ref{fig:q10} indicate that all participants found meta-models easy to understand and use.
+One respondent identified a problem that he experienced while using the meta-model that arose from the fact that the metamodeled properties were mixed with other methods that are inherited by a meta-model class, thus making it difficult to distinguish them.
+This effect can be observed in Figure \ref{fig:eclipse}, where only property related methods are highlighted.
 \mychart{5}{2}{0}{0}{0}{Question 10: Intuitiveness and ease of use}{Overall structure of the entity meta-model was easy to understand and intuitive in its use for referencing and chaining properties of an entity.}{q10}
 
+\noindent Figure \ref{fig:q11} shows that the majority of responses indicate an uncertainty in regards to improvements of meta-model structure.
+One of the respondents noticed that the naming convention of meta-models is prone to cause conflicts with the names of the actual Java types at compile time.
+We take this comment into consideration when discussing future work.
 \mychart{0}{1}{5}{0}{1}{Question 11: Intuitiveness and ease of use}{The entity meta-model could be structured in a better way.}{q11}
 
+\noindent Figure \ref{fig:q12} shows that all participants felt positively about their experince of using meta-models.
+One of the respondents even admited that despite his reluctancy to changes he felt that the addition of meta-models was useful.
 \mychart{5}{2}{0}{0}{0}{Question 12: Intuitiveness and ease of use}{Overall, I am rather satisfied with the experience of utilizing the meta-model generation tool.}{q12}

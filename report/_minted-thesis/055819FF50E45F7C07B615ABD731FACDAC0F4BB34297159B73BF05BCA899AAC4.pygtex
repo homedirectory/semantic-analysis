@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kd}{class} \PYG{n+nc}{Order} \PYG{p}{\PYGZob{}}
+        \PYG{k+kd}{private} \PYG{k+kt}{int} \PYG{n}{number}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kd}{class} \PYG{n+nc}{Customer} \PYG{p}{\PYGZob{}}
+        \PYG{k+kd}{private} \PYG{n}{String} \PYG{n}{name}\PYG{p}{;}
+        \PYG{k+kd}{private} \PYG{k+kt}{int} \PYG{n}{age}\PYG{p}{;}
+        \PYG{k+kd}{private} \PYG{n}{Order} \PYG{n}{order}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

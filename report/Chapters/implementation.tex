@@ -1,25 +1,43 @@
-\chapter{Implementation details}
+\chapter{Implementation details}\label{chap:imp}
 
-The meta-model generation mechanism is implemented as an annotation processor, hereafter referred to as "domain-model processor".
+The source code of presented implementation is hosted on \href{https://github.com/fieldenms/tg/blob/Issue-\%23849/platform-annotation-processors/src/main/java/ua/com/fielden/platform/processors/metamodel/MetaModelProcessor.java}{GitHub}\footnote{GitHub Issue - \url{https://github.com/fieldenms/tg/issues/849}.
+
+\; \;Github Wiki page - \url{https://github.com/fieldenms/tg/wiki/MetaModels}.}.
+
+\n
+
+The meta-model generation mechanism is implemented as an annotation processor, hereafter referred to as "domain model processor".
 
 \begin{figure}[H]\centering
     \includegraphics[scale=0.65]{images/implement1.drawio.png}
-    \caption[Input and output of the annotation processor]{Annotation processor accepts a processing environment on input and produces generated sources on output}\label{fig:implement1}
+    \caption[Input and output of the domain model processor]{Domain model processor accepts a processing environment on input and produces generated sources on output}\label{fig:implement1}
 \end{figure}
 
 The annotation processor is initialized with a processing environment, by the compiler.
 The processing environment provides an AST that was obtained by parsing source files.
 In the incremental compilation environments, the processor benefits from the fact that it is possible to access the AST of a source file that was not necessarily a part of the compiler’s input.
-
-\section{Entity graph}
-A convenient and intuitive model for entities and their properties is a graph.
-The structure of an entity can be represented as a directed graph where each node is a type, with the \textit{source} being the type of the entity itself.
-A domain graph must include all entity nodes, thus it may have multiple sources.
-An arc $(x, y)$ can be read as "Entity $x$ has a property of type $y$". 
+The domain model processor performs semantic analysis of its input and obtains the domain model as a result.
 
 \n
 
-Figure \ref{fig:entity-graph} depicts a graph for entity \texttt{Person}, \texttt{User} and \texttt{Vehicle}.
+We define the following domain evolution operations that are covered by the meta-model generation mechanism:
+\begin{enumerate}
+    \item Creation of a domain entity.
+    \item Renaming of a domain entity.
+    \item Removal (deletion) of a domain entity.
+    \item Modification of a domain entity's structure that encompasses the following suboperations: renaming of a property, removal of a property, modification of a property's type or name, and creation of a new property.
+\end{enumerate}
+
+Each of these operations leads to an according change in the conceptual schema. Therefore, it is important to be able to detect those changes (by means of semantic analysis) and reflect them in the meta-model.
+
+\section{Entity graph}
+A convenient and intuitive model for entities and their properties is a graph.
+The structure of an entity can be represented as a directed graph where each node is a type, with the \textit{source} being the type of an entity itself.
+An arc $(x, y)$ represents an association and can be read as "Entity $x$ has a property of type $y$". 
+
+\n
+
+Figure \ref{fig:entity-graph} depicts an entity graph for \texttt{Person}, \texttt{User} and \texttt{Vehicle}.
 The labels attached to arcs are the corresponding names of those properties.
 All nodes are labeled with their type’s name.
 The ones filled with blue are entity types, while those filled with white, which are always sinks, are non-entity types.
@@ -71,16 +89,14 @@ At the highest level the meta-model generation mechanism functions according to 
         \end{enumerate}
 
     \addtocounter{enumi}{1}
-    \item Consider a situation where \texttt{Person} and \texttt{User} entities are metamodeled, while the \texttt{Vehicle} entity is not. Then the following meta-model graph exists:
-
+    \item Consider a situation where \texttt{Person} and \texttt{User} entities are metamodeled, while the \texttt{Vehicle} entity is not. Then the following entity meta-model graph exists:
 
         \begin{figure}[H]\centering
             \includegraphics[scale=0.65]{images/meta-model-graph.drawio.png}
-            \caption{A meta-model graph for entity \texttt{Person,} where \texttt{User} is metamodeled, but \texttt{Vehicle} is not}\label{fig:meta-model_graph}
+            \caption{An entity meta-model graph where \texttt{Person} and \texttt{User} are metamodeled, but \texttt{Vehicle} is not}\label{fig:meta-model_graph}
         \end{figure}
 
-    Then, if the entity \texttt{Vehicle} becomes metamodeled, the arc $(PersonMetaModel, PropertyMetaModel)$ labeled \texttt{vehicle()} should be replaced by an arc $(PersonMetaModel, VehicleMetaModel)$, effectively connecting both graphs.
-
+    Then, if \texttt{Vehicle} becomes metamodeled, the arc $(PersonMetaModel, PropertyMetaModel)$ labeled \texttt{vehicle()} should be replaced by an arc $(PersonMetaModel, VehicleMetaModel)$.
 
         \begin{figure}[H]\centering
             \includegraphics[scale=0.65]{images/meta-model-graph1.drawio.png}
@@ -188,7 +204,7 @@ Methods of a meta-model that are used to traverse the entity graph contain addit
     \label{lst:person_meta-model_usage}
 \end{listing}
 
-Suppose that the conceptual schema has changed, resulting in the \texttt{Vehicle} entity no longer having the property \texttt{cost}. Then, the following compilation error would occur at line 13:
+Suppose that the conceptual schema has changed, resulting in the \texttt{Vehicle} entity no longer having property \texttt{cost}. Then, the following compilation error would occur at line 13:
 \begin{minted}[escapeinside=||]{java}
     // error: The method cost() is undefined for the type VehicleMetaModel
     person.vehicle().|\textcolor{red}{\uwave{\textcolor{black}{cost()}}}|,
@@ -202,7 +218,7 @@ The true power of a meta-model is manifested in combination with code auto-compl
     \includegraphics[scale=0.5]{images/eclipse-hl.jpg}
     \caption[Traversing the entity graph with the help of Eclipse IDE code auto-completion feature]{Traversing the entity graph with the help of Eclipse IDE code auto-completion feature
     \\
-    \textit{Note}: Property-methods are highlighted}\label{fig:meta-model_uml}
+    \textit{Note}: Property-methods are highlighted}\label{fig:eclipse}
 \end{figure}
 
 

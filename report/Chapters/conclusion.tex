@@ -1,1 +1,55 @@
-\chapter{Conclusion \& future work}
+\chapter{Conclusion and future work}\label{chap:cncls-ftr}
+In this chapter, the research findings are reviewed against the original objectives set out in Chapter \ref{chap:intro}.
+This is followed by some suggestions for future work.
+
+\section{Review against the original objectives} 
+Chapter \ref{chap:intro} outlined three aspects of software construction to be improved: domain discoverability, system reliability and system evolvability.
+
+\n
+
+In Chapter \ref{chap:intro} we stated our hypothesis that the lack of metamodeling facilities on the level of programming language that provide design-time domain discoverability features is an accidental complexity involved in the process of software construction.
+It was shown that the consequences of this complexity limit the extent to which systems can be made reliable and software evolvable.
+
+\n
+
+In Chapter \ref{chap:relwork} by examining related work we showed that the grounds for our hypothesis find their place in the software engineering field.
+It was found that the developers of Hibernate, a widely-used ORM framework in Java, were also aware of the issue at the core of our hypothesis.
+Their solution, while satisfying the needs of the framework, was deemed to be not advanced enough to facilitate domain discoverability.
+
+\n
+
+Chapter \ref{chap:imp} introduced an approach built around the concept of meta-model.
+It uses the Java annotation processing API to perform semantic analysis of the domain model in order to generate a meta-model of the domain.
+
+\n
+
+Chapter \ref{chap:eval} described the results obtained by evaluating the implementation.
+The conducted experiment showed that when the approach was used in application to transactional business information systems it led to improvements in all three aspects, as was judged by the focus group of software engineers.
+
+\section{Future work}
+During the course of the research several potentially valuable areas of improvement have been identified. Some of them were brought to our attention during the experiment stage.
+
+\subsection{Integration with IDEs}
+Considering the significant role of IDEs in software engineering, the need for integration with the meta-model was identified as one of the most valuable improvements.
+Firstly, it is desirable to enhance the refactoring capabilites of an IDE by instructing the underlying mechanism to take the references to meta-models into account during this process.
+This would reduce the time spent on the repetitive activity of modifying the entity graph paths in the source code.
+Secondly, it would be fitting if the methods of a meta-model class would benefit from syntax highlighting features of an IDE in the same way as the fields of a class do when they are referenced.
+This would result in better code readability.
+
+\subsection{Compile time constant values}
+As was mentioned by one of the participants of the experiment, the meta-model's nature does not allow software engineers to use it as a constant value at compile time, forcing them to revert to the usage of unreliable textual representation.
+We admit that our implementation of the meta-model is not able to manifest its true power at compile time due to the limits of Java programming language.
+However, this limitation can be partially overcome by providing a single level entity graph traversal capabilities at compile time, thus it is considered an attainable goal.
+Also, the need for traversing an entity graph deeper than a single level at compile time has not been identified yet.
+
+\subsection{Support for external metadata}
+During the experiment one participant invented a new use for the meta-model.
+He identified the need for insertion of external metadata into the constructed paths from traversing an entity graph.
+Using this approach would make it possible to combine the meta-model with other sources of metadata.
+We believe that this would further expand the metamodeling capabilites and recognize this as a feasible improvement.
+
+\subsection{General framework indepent approach}
+The idea of creating an abstraction for metamodeling capabilities opens the door to vast improvements in information systems design and software engineering in general.
+Such an abstraction could be designed in the form of an annotation processor with the core logic similar to that presented in this research.
+A framework independent implementation in Java is a task that can be accomplished by designing a general interface for a framework to conform to.
+The use of reflection is proposed to link the interface implementation to the abstraction (meta-model generation mechanism).
