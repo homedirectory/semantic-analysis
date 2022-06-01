@@ -4,7 +4,7 @@
 \PYG{c+cm}{    * Description: The name of this person}
 \PYG{c+cm}{    * Type: \PYGZob{}@link String\PYGZcb{}}
 \PYG{c+cm}{    * \PYGZob{}@literal @\PYGZcb{}\PYGZob{}@link IsProperty\PYGZcb{}}
-\PYG{c+cm}{    * \PYGZob{}@literal @\PYGZcb{}\PYGZob{}@link DummyAnnotation\PYGZcb{}(value = 10)}
+\PYG{c+cm}{    * \PYGZob{}@literal @\PYGZcb{}\PYGZob{}@link MaxLength\PYGZcb{}(value = 255)}
 \PYG{c+cm}{    */}
     \PYG{k+kd}{public} \PYG{n}{PropertyMetaModel} \PYG{n+nf}{name}\PYG{p}{()} \PYG{p}{\PYGZob{}}
         \PYG{k}{return} \PYG{k}{this}\PYG{p}{.}\PYG{n+na}{name}\PYG{p}{;}

@@ -1,28 +1,27 @@
-%\begin{relatedwork}
-
-% add chapter to table of contents
-%\addchaptertocentry{Related Work}
-
 \chapter{Related work}
+What follows is the discussion of existing approaches that are related to the objectives of this research.
 
 \section{C\# nameof}
+C\# has a \texttt{nameof} expression \cite{cSharp-nameof} that is used to obtain the name of a program element as a constant string.
 
-    C\# has a \texttt{nameof} expression that is used to obtain the name of a program element as a constant string.\footnote{\href{https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/nameof}{\texttt{nameof}}} 
+\begin{listing}[H]
+    \begin{minted}{csharp}
+    using System.Collections.Generic;
 
-\begin{minted}{csharp}
-using System.Collections.Generic;
-
-class Program {
-    static void Main() {
-        string s1 = nameof(Program);                     // "Program"
-        string s2 = nameof(Program.InstanceMethod);      // "InstanceMethod"
-        string s3 = nameof(System.Collections.Generic);  // "Generic"
-        // Invalid
-        string s4 = nameof(int);               // Keywords not permitted
+    class Program {
+        static void Main() {
+            string s1 = nameof(Program);                     // "Program"
+            string s2 = nameof(Program.InstanceMethod);      // "InstanceMethod"
+            string s3 = nameof(System.Collections.Generic);  // "Generic"
+            // Invalid
+            string s4 = nameof(int);               // Keywords not permitted
+        }
+        void InstanceMethod() { }
     }
-    void InstanceMethod() { }
-}
-\end{minted}
+    \end{minted}
+    \caption{Example of \texttt{nameof} expression in C\#.}
+    \label{lst:csharp-nameof}
+\end{listing}
 
 % TODO
 The result of the \texttt{nameof} expression is evaluated at compile time, meaning that \texttt{nameof(x)} if \texttt{x} is legal input is replaced by \texttt{"x"} in the resulting bytecode of the program. Our interest is drawn, however, to the use of property literals as string constants. And indeed nameof accepts class properties as input:
@@ -37,7 +36,7 @@ nameof(Book.title) // "title"
 This is quite an effective way of using property literals as constant strings and it satisfies the compile time model correctness property. There are, however, several limitations to this approach, which are demonstrated below with provided examples:
 
 \begin{enumerate}
-    \item The \texttt{nameof} expression cannot be applied to class members with restricted access, such as private members. Although we consider this a limitation, the example above, which makes use of C\# Properties\footnote{\href{https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties}{C\# properties}}, is not constrained by it.
+    \item The \texttt{nameof} expression cannot be applied to class members with restricted access, such as private members. Although we consider this a limitation, the example above, which makes use of C\# Properties \cite{cSharp-props}, is not constrained by it.
 
     \item The nameof expression always returns a simple name of its input, that is, the resulting name is not fully-qualified. This was demonstrated in the first code snippet:
 \begin{minted}{csharp}
@@ -67,14 +66,10 @@ class DotNotation {
 }
 \end{minted}
 
-\texttt{Book.author.fullName} is used instead of simply \texttt{Author.fullName} to satisfy the compile time safety requirement. If the latter was used and the conceptual schema was changed leading to the type of \texttt{Book.author} not being \texttt{Author} anymore, but instead a value object or another entity that doesn’t have the property \texttt{fullName}, a run-time error would occur at the moment of the dot-notation being used (to fetch some data from a database, for example). Consequently, this results in an unintuitive and overly verbose code.
+\texttt{Book.author.fullName} is used instead of simply \texttt{Author.fullName} to satisfy the compile time safety requirement. If the latter was used and the conceptual schema was changed leading to the type of \texttt{Book.author} not being \texttt{Author} anymore, but instead a value object or another entity that doesn’t have the property \texttt{fullName}, a runtime error would occur at the moment of the dot-notation being used (to fetch some data from a database, for example). Consequently, this results in an unintuitive and overly verbose code.
 
 \section{Java nameof hack}
-
-While the java programming language specification does not define property literals or an expression similar to that of C\# \texttt{nameof}, there are 3rd party libraries that attempt to achieve the desired result by means of byte-code manipulation through the use of method references.\footnote{\href{https://github.com/strangeway-org/nameof}{nameof by strangeway-org}
-
-\; \; \href{https://github.com/mobiuscode-de/nameof}{nameof by mobiuscode-de}}
-
+While the Java programming language specification does not define property literals or an expression similar to that of C\# \texttt{nameof}, there are 3rd party libraries \cite{nameof-strange} \cite{nameof-mobius} that attempt to achieve the desired result by means of byte-code manipulation through the use of method references
 
 \subsection{Method references}
 Java has a special syntax for referring to a method of a class as if it was a lambda expression. Consider the following example: 
@@ -98,7 +93,7 @@ This makes it possible to avoid writing a full lambda expression:
 Reflection is a feature in the Java programming language that allows a Java program to discover and manipulate information about itself in the runtime. More precisely, one can obtain information such as names of class members, their types, etc. In addition, it is possible to "intercept" a method of a class by using a \textit{dynamic proxy}. In this case an interceptor would gain access to the information about the intercepted method, such as its name, parameter types, return type, etc.
 
 \subsection{The hack}
-The idea is to use a combination of method references and reflection to intercept the getter method call, such as \texttt{getName()} in the above example and map the method name to a field name, for which the getter was designed. As a result it would be possible to get the property name as a String in a compile time safe manner:
+It is possible to use a combination of method references and reflection to intercept the getter method call, such as \texttt{getName()} in the above example and map the method name to a field name, for which the getter was designed. As a result it would be possible to get the property name as a String in a compile time safe manner:
 
 \begin{minted}{java}
 nameOf(Person.class, Person::getName) // "name"
@@ -107,60 +102,69 @@ nameOf(Person.class, Person::getName) // "name"
 As this approach is merely mimicking the \texttt{nameof} expression of C\#, it is subject to the same limitations. In addition, there is no way of chaining properties to construct a dot-notation in a compile time safe manner, since method references are semantically equivalent to lambda expressions.
 
 \section{Project Lombok}
-Project Lombok provides a handful of useful additions to the java programming language in the form of annotations with the aim to reduce boilerplate code (footnote). The specificity of this approach lies in the fact that lombok injects itself into the compilation phase to build on top of the source code being compiled, that is, lombok’s annotations are used to replace repetitive pieces of code.
+Project Lombok \cite{lombok} provides a handful of useful additions to the Java programming language in the form of annotations with the aim to reduce boilerplate code\footnote{Boilerplate is a term used for the parts of code that are repeated in multiple places with little to no variation}.
+The specificity of this approach lies in the fact that lombok injects itself into the compilation phase to build on top of the source code being compiled, that is, lombok’s annotations are used to replace repetitive pieces of code.
 
 \n
 
-Project Lombok makes use of annotation processing for the sole purpose of identifying the supported annotations, i.e., as an entry point, and, unlike the original purpose of APT, does not generate any source files. Instead it uses the internal API of java compiler (supports javac and ecj\footnote{Eclipse Compiler for Java}) to manipulate the AST. The resulting AST is then analyzed and translated into bytecode.
-\begin{figure}[ht]\centering
+Project Lombok makes use of annotation processing for the sole purpose of identifying the supported annotations, i.e., as an entry point, and, unlike the original purpose of APT, does not generate any source files.
+Instead it uses the internal API of Java compiler (supports javac and ecj\footnote{Eclipse Compiler for Java}) to manipulate the AST.
+The resulting AST is then analyzed and translated into bytecode.
+This process is illustrated by the following figure \cite{lombok-fig}.
+\begin{figure}[H]\centering
     \includegraphics[scale=0.5]{images/lombok.jpg}
-    \caption{Lombok Annotation Processor modifies the AST}
+    \caption{Lombok Annotation Processor modifies an AST}
     \label{fig:lombok}
 \end{figure}
 
 \subsection{@FieldNameConstants annotation}
-One of the experimental features of Project Lombok, \texttt{@FieldNameConstants}\footnote{\url{https://projectlombok.org/features/experimental/FieldNameConstants}} annotation is used to generate an inner type that contains a string constant representing a field’s name for each field of the annotated type. This annotation is provided with some room for configuration, such as inclusion or exclusion of particular fields, capitalization of generated fields names, the name of the inner generated type, etc.
+One of the experimental features of Project Lombok, \texttt{@FieldNameConstants} \cite{lombok-fnc} annotation is used to generate an inner type that contains a string constant representing a field’s name for each field of the annotated type.
+This annotation is provided with some room for configuration, such as inclusion or exclusion of particular fields, capitalization of generated fields names, the name of the inner generated type, etc.
+The following listings demonstrate the benefits of using Lombok.
 
-Java source with Lombok:
-\begin{minted}{java}
-@FieldNameConstants
-public class Person {
-    private String name;
-    private int age;
-    @FieldNameConstants.Exclude
-    private String id;
-}
-\end{minted}
-
-Equivalent Java source without Lombok:
-\begin{minted}{java}
-public class Person {
-    private String name;
-    private int age;
-    private String id;
-
-    public static final class Fields {
-        public static final String name = "name";
-        public static final String age = "age";
+\begin{listing}[H]
+    \begin{minted}{java}
+    @FieldNameConstants
+    public class Person {
+        private String name;
+        private int age;
+        @FieldNameConstants.Exclude
+        private String id;
     }
-}
-\end{minted}
+    \end{minted}
+    \caption{Java source code using Lombok.}\label{lst:java-lombok}
+\end{listing}
 
-This approach, although effective for basic needs, is limited by its simplicity, as indicated by the following points:
+\begin{listing}[H]
+    \begin{minted}{java}
+    public class Person {
+        private String name;
+        private int age;
+        private String id;
+
+        public static final class Fields {
+            public static final String name = "name";
+            public static final String age = "age";
+        }
+    }
+    \end{minted}
+    \caption{Java source code equivalent to \ref{lst:java-lombok}, but without Lombok.}
+    \label{lst:java-no-lombok}
+\end{listing}
+
+This approach, although effective for basic needs, is limited by its trivial nature:
 \begin{itemize}
-    \item The generated entity graph is limited by a depth of a single level, as the generated fields are always of type String.
+    \item The generated entity graph is limited by a depth of a single level, as the generated fields are always of type \texttt{String}.
     \item Domain discoverability is limited by the lack of descriptiveness of the generated fields, since no javadoc accompanying a field is generated.
 \end{itemize}
 
 However, the approach employed by Project Lombok is certainly a unique and inspiring piece of work to learn from.
 
 \section{Hibernate Metamodel Generator}
-
-Hibernate is an implementation for the JPA\footnote{Java Persistence API (renamed to Jakarta Persistence)}.
-
-\n
-
-Hibernate Metamodel Generator\footnote{\url{https://docs.jboss.org/hibernate/orm/6.0/topical/html\_single/metamodelgen/MetamodelGenerator.html}} is an annotation processing tool that is a part of the Hibernate ORM framework. It automates the generation of static entity meta-models used for typesafe Criteria queries as defined by the JPA 2. The queries benefit from the meta-models by being able to be constructed in a strongly-typed manner, thus avoiding the risks of type casting the result of a query.
+Hibernate is an implementation for the JPA\footnote{Java Persistence API (renamed to Jakarta Persistence)} \cite{jpa}. Hibernate Metamodel Generator \cite{hmg} is an annotation processing tool that is a part of the Hibernate ORM framework.
+It automates the generation of static entity meta-models used for typesafe Criteria queries as defined by the JPA 2.
+The queries benefit from the meta-models by being able to be constructed in a strongly-typed manner, thus avoiding the risks of type casting the result of a query.
+Consider the following example:
 
 \begin{minted}{java}
 @Entity

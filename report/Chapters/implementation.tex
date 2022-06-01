@@ -1,32 +1,42 @@
 \chapter{Implementation details}
 
-The meta-model generation mechanism is implemented as an annotation processor, hereafter referred to as "meta-model processor".
+The meta-model generation mechanism is implemented as an annotation processor, hereafter referred to as "domain-model processor".
 
 \begin{figure}[H]\centering
     \includegraphics[scale=0.65]{images/implement1.drawio.png}
     \caption[Input and output of the annotation processor]{Annotation processor accepts a processing environment on input and produces generated sources on output}\label{fig:implement1}
 \end{figure}
 
-The annotation processor is initialized with a processing environment, by the compiler. The processing environment provides an AST that was obtained by parsing source files. In incremental compilation environments the processor benefits from the fact that it’s possible to access the AST of a source file that wasn’t necessarily a part of the compiler’s input.
+The annotation processor is initialized with a processing environment, by the compiler.
+The processing environment provides an AST that was obtained by parsing source files.
+In the incremental compilation environments, the processor benefits from the fact that it is possible to access the AST of a source file that was not necessarily a part of the compiler’s input.
 
 \section{Entity graph}
-A convenient and intuitive way to talk about an entity and its properties is in terms of graphs. The structure of an entity can be represented as a directed graph where each node is a type, with the \textit{source} being the type of the entity itself. A domain graph must include all entity nodes, thus it may have multiple sources.
+A convenient and intuitive model for entities and their properties is a graph.
+The structure of an entity can be represented as a directed graph where each node is a type, with the \textit{source} being the type of the entity itself.
+A domain graph must include all entity nodes, thus it may have multiple sources.
 An arc $(x, y)$ can be read as "Entity $x$ has a property of type $y$". 
+
+\n
+
+Figure \ref{fig:entity-graph} depicts a graph for entity \texttt{Person}, \texttt{User} and \texttt{Vehicle}.
+The labels attached to arcs are the corresponding names of those properties.
+All nodes are labeled with their type’s name.
+The ones filled with blue are entity types, while those filled with white, which are always sinks, are non-entity types.
+An entity graph might contain a cycle.
+For example, the above graph contains one cycle $(User, User)$ at the \texttt{basedOnUser} property.
 
 \begin{figure}[H]\centering
     \includegraphics[scale=0.65]{images/entity-graph.drawio.png}
     \caption{\texttt{Person} entity graph}\label{fig:entity-graph}
 \end{figure}
 
-The labels attached to arcs are the corresponding names of those properties. All nodes are labeled with their type’s name. The ones filled with blue are entity types, while those filled with white, which are always sinks, are non-entity types. An entity graph might contain a cycle. For example, the above graph contains one cycle $(User, User)$ at the \texttt{basedOnUser} property.
-
-
 \section{Meta-model generation algorithm}
 At the highest level the meta-model generation mechanism functions according to the following rules:
 \begin{itemize}
     \item For each class annotated with \texttt{@MapEntityTo} or \texttt{@DomainEntity} there will be a meta-model generated that captures all of its properties, that is, all fields annotated with \texttt{@IsProperty}.
-    \item A meta-models collection class will be generated. This class is a container storing an instance of every active meta-model in a static field. In other words, it contains an entity graph for each metamodeled entity.
-    \item Whenever a metamodeled entity is modified, the whole entity graph is considered for regeneration. That is, each node representing a metamodeled entity will have its metamodel regenerated. The renaming and deletion of an entity is also covered.
+    \item A meta-models collection class will be generated. This class is a container storing an instance of every active meta-model in a static field. In other words, it contains an entity graph for each domain entity.
+    \item Whenever a domain entity is modified, the whole entity graph is considered for regeneration. That is, each node representing a domain entity will have its metamodel regenerated. The renaming and deletion of an entity is also covered.
     \item If an entity should no longer be metamodeled, that is, it is either no longer annotated with the above mentioned annotations or deleted, then its meta-model is regenerated into an inactive one. Its entity graph is removed from the meta-models collection class.
 \end{itemize}
 
@@ -100,7 +110,7 @@ Methods of a meta-model that are used to traverse the entity graph contain addit
     \begin{minted}{java}
     @IsProperty
     @Title("Name", desc = "The name of this person")
-    @DummyAnnotation(10)
+    @MaxLength(255)
     private String name;
     \end{minted}
     \caption{An arbitrary non-entity type property (a sink node in the graph)}
@@ -114,7 +124,7 @@ Methods of a meta-model that are used to traverse the entity graph contain addit
     * Description: The name of this person
     * Type: {@link String}
     * {@literal @}{@link IsProperty}
-    * {@literal @}{@link DummyAnnotation}(value = 10)
+    * {@literal @}{@link MaxLength}(value = 255)
     */
     public PropertyMetaModel name() {
         return this.name;
@@ -161,16 +171,16 @@ Methods of a meta-model that are used to traverse the entity graph contain addit
         // a fetch model used to fetch data from a database
         static final Fetch<Person> FETCH = fetch(Person.class).with(
                 // sink node
-                person.name().toPath(),                   // "name"
+                person.name(),                   // "name"
 
                 // entity node
-                person.user().toPath(),                   // "user"
-                person.user().basedOnUser().toPath(),     // "user.basedOnUser"
-                person.vehicle().toPath(),                // "vehicle"
-                person.vehicle().cost().toPath(),         // "vehicle.cost"
+                person.user(),                   // "user"
+                person.user().basedOnUser(),     // "user.basedOnUser"
+                person.vehicle(),                // "vehicle"
+                person.vehicle().cost(),         // "vehicle.cost"
 
                 // source node
-                person.toPath()                           // "this"
+                person                           // "this"
                 );
     }
     \end{minted}
@@ -178,10 +188,10 @@ Methods of a meta-model that are used to traverse the entity graph contain addit
     \label{lst:person_meta-model_usage}
 \end{listing}
 
-Suppose that conceptual schema has changed resulting in the \texttt{Vehicle} entity no longer having a property \texttt{cost}. Then, the following compilation error would occur at line 13:
+Suppose that the conceptual schema has changed, resulting in the \texttt{Vehicle} entity no longer having the property \texttt{cost}. Then, the following compilation error would occur at line 13:
 \begin{minted}[escapeinside=||]{java}
     // error: The method cost() is undefined for the type VehicleMetaModel
-    person.vehicle().|\textcolor{red}{\uwave{\textcolor{black}{cost()}}}\textcolor{black}{.toPath()}|,
+    person.vehicle().|\textcolor{red}{\uwave{\textcolor{black}{cost()}}}|,
 \end{minted}
 
 \n

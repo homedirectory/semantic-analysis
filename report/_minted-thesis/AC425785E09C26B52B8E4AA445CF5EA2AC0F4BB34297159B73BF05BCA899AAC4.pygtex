@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kd}{public} \PYG{k+kd}{class} \PYG{n+nc}{PersonFetcher} \PYG{p}{\PYGZob{}}
+        \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{PersonMetaModel} \PYG{n}{person} \PYG{o}{=} \PYG{n}{MetaModels}\PYG{p}{.}\PYG{n+na}{Person}\PYG{p}{;}
+
+        \PYG{c+c1}{// a fetch model used to fetch data from a database}
+        \PYG{k+kd}{static} \PYG{k+kd}{final} \PYG{n}{Fetch}\PYG{o}{\PYGZlt{}}\PYG{n}{Person}\PYG{o}{\PYGZgt{}} \PYG{n}{FETCH} \PYG{o}{=} \PYG{n}{fetch}\PYG{p}{(}\PYG{n}{Person}\PYG{p}{.}\PYG{n+na}{class}\PYG{p}{).}\PYG{n+na}{with}\PYG{p}{(}
+                \PYG{c+c1}{// sink node}
+                \PYG{n}{person}\PYG{p}{.}\PYG{n+na}{name}\PYG{p}{(),}                   \PYG{c+c1}{// \PYGZdq{}name\PYGZdq{}}
+
+                \PYG{c+c1}{// entity node}
+                \PYG{n}{person}\PYG{p}{.}\PYG{n+na}{user}\PYG{p}{(),}                   \PYG{c+c1}{// \PYGZdq{}user\PYGZdq{}}
+                \PYG{n}{person}\PYG{p}{.}\PYG{n+na}{user}\PYG{p}{().}\PYG{n+na}{basedOnUser}\PYG{p}{(),}     \PYG{c+c1}{// \PYGZdq{}user.basedOnUser\PYGZdq{}}
+                \PYG{n}{person}\PYG{p}{.}\PYG{n+na}{vehicle}\PYG{p}{(),}                \PYG{c+c1}{// \PYGZdq{}vehicle\PYGZdq{}}
+                \PYG{n}{person}\PYG{p}{.}\PYG{n+na}{vehicle}\PYG{p}{().}\PYG{n+na}{cost}\PYG{p}{(),}         \PYG{c+c1}{// \PYGZdq{}vehicle.cost\PYGZdq{}}
+
+                \PYG{c+c1}{// source node}
+                \PYG{n}{person}                           \PYG{c+c1}{// \PYGZdq{}this\PYGZdq{}}
+                \PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

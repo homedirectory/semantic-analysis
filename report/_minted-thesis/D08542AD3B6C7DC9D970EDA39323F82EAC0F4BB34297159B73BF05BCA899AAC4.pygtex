@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{k+kd}{class} \PYG{n+nc}{Account} \PYG{p}{\PYGZob{}}
+            \PYG{k+kd}{private} \PYG{k+kt}{int} \PYG{n}{number}\PYG{p}{;}
+            \PYG{k+kd}{private} \PYG{n}{String} \PYG{n}{ownerName}\PYG{p}{;}
+            \PYG{k+kd}{private} \PYG{k+kt}{float} \PYG{n}{balance}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+
+        \PYG{k+kd}{class} \PYG{n+nc}{Transaction} \PYG{p}{\PYGZob{}}
+            \PYG{k+kd}{private} \PYG{n}{Account} \PYG{n}{fromAccount}\PYG{p}{;}
+            \PYG{k+kd}{private} \PYG{n}{Account} \PYG{n}{toAccount}\PYG{p}{;}
+            \PYG{k+kd}{private} \PYG{k+kt}{float} \PYG{n}{amount}\PYG{p}{;}
+            \PYG{k+kd}{private} \PYG{n}{DateTime} \PYG{n}{datetime}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

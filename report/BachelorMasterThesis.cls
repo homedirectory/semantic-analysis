@@ -28,7 +28,7 @@
 % MY CUSTOM COMMANDS
 \newcommand{\n}{\medskip}
 
-\newcommand{\mychart}[7]{
+\newcommand{\mychart}[8]{
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}
@@ -47,7 +47,7 @@
 };
 \end{axis}
 \end{tikzpicture}
-    \caption[#6]{Responses to the statement: \textbf{#7}}
+    \caption[#6]{Responses to the statement: \textbf{#7}}\label{fig:#8}
 \end{figure}
 }
 

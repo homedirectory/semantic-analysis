@@ -1,18 +1,24 @@
 \chapter{Introduction}
 
 % object, area, goal
-In the information systems field, the term \textit{conceptual modeling} is used to denote the activity of describing and structuring the general knowledge a particular information system needs to know.
+An important piece of work in the information systems field by Antoni Olive \cite{CMofIS} defines the term \textit{conceptual modeling} as the activity of describing and structuring the general knowledge a particular information system needs to know.
 The main objective of conceptual modeling is to obtain that description, which is called a \textit{conceptual schema}.
 Conceptual modeling is an important part of requirements engineering, the first and most important phase in the development of an information system.
 However, any information system will invariably undergo modification, either due to the demands of its users or as a result of a change in the nature of the information itself or for other reasons.
 Therefore, one of the most important properties of information systems is evolvability.
-It is often the case that a description of a conceptual schema needs to be represented in a system. 
-However, not in the form of source code, but contained in the source code.
-This description is defined as a \textit{meta-model}, which effectively models a conceptual model.
-The information contained in a meta-model is called \textit{metadata}.
-Since this meta-level information is also a part of a system it is desirable for this part to be evolvable as well.
-Moreover, precisely because a meta-model is a description, it must be consistent with the underlying model.
-Ideally, a meta-model would always be automatically updated to match the description of a conceptual schema.
+
+\n
+
+%It is often the case that a description of a conceptual schema needs to be represented in a system. 
+%However, not in the form of source code, but contained in the source code.
+An ability to access and process the information about a conceptual schema programmatically at runtime is widely used by various technologies for automation of otherwise complex and error-prone software engineering tasks.
+For example, Object-Relational Mapping (ORM)\footnote{Object-Relational Mapping is a technique used to interact with a database through an interface in object-oriented paradigm.} technologies automate mapping between two representations of a conceptual schema: expressed in OOP terms as classes and expressed in terms of a relational database.
+This information is a structured representation of a conceptual schema, which we shall refer to as \textit{meta-model}.
+Although accessible at runtime, such meta-models also need to be made available to software engineers at design time.
+The information provided by meta-model is called \textit{metadata}.
+Since this meta-level information is also a part of a system it is desirable for it to be evolvable as well.
+Moreover, due to the fact that a meta-model reflects the structure of a conceptual schema, it must be consistent with it.
+Ideally, a meta-model would always be automatically updated to match the structure of a conceptual schema.
 
 \n
 
@@ -49,15 +55,28 @@ Brooks \cite{brooks} defines two kinds of complexity involved in the process of 
 Essential complexity stems from the inherent properties of software, such as the size of software systems, conformity to other interfaces, changeability and invisibility (inability to be visualized).
 Accidental complexity is manifested in any activity that engages in representation of conceputal software structures in programming languages and mapping of those structures onto machine languages within space and speed constraints.
 Among past breakthroughs in solving accidental difficulties are: high-level programming languages, time-sharing systems and unified programming environments.
-Following Brooks’s excerpt on time-sharing which he views as an attack on a specific accidental difficulty -- interruption of consciousness due to a need to call for compilation and execution, which might result in the decay of grasp of all that is going on in a complex system -- we argue that the lack of advanced design-time domain discoverability tools is the same kind of difficulty with negative effects of similar nature.
+Following Brooks’s excerpt on time-sharing which he views as an attack on a specific accidental difficulty -- interruption of consciousness due to a need to call for compilation and execution, which might result in the decay of grasp of all that is going on in a complex system -- our main hypothesis is that the lack of programming language-level metamodeling facilities with advanced design-time domain discoverability features is the same kind of difficulty with negative effects of similar nature.
 
 \section{System reliability}
-Reliability of a software system is its ability to perform a given task in an expected way without causing errors.
-A common practice of ensuring reliability of a software system is automated testing that is performed against a running system, that is, during run-time.
-One of the desirable properties of these tests is high code coverage, which is a measure of the amount of source code of a program that was executed, hence covered, during testing.
+% informal reasoning, cite Out of the Tar Pit
+Reliability of a system is its ability to perform a given task in an expected way without causing errors.
+In order to build reliable systems it is important to understand those systems.
+Moseley \& Marks \cite{moseley} identified two widely-used approches to understanding systems: \textit{testing} and \textit{informal reasoning}; with an emphasis on the importance of the latter.
+Informal reasoning is an attempt to understand the system by examining it from the inside.
+Its importance was explained by Moseley \& Marks by the fact that improvements in informal reasoning lead to \textit{less errors being created}, as opposed to improvements in testing that lead only to \textit{more errors being detected}.
+One of the desirable properties of testing is high code coverage, which is a measure of the amount of source code of a program that was executed, hence covered, during testing.
 However, for systems of significant size, characterized by large code volume with complex structure, testing is usually a time consuming process.
-Moreover, no guarantees can be given that a failing test will not occur at the very end of the whole process.
-Therefore, it is preferable to delegate as much program validation as possible to a compiler.
+No guarantees can be given that a failing test will not occur at the very end of the whole process.
+Because of this, understanding systems through testing is also more time-consuming.
+Therefore, it is preferable to focus on ways of improving informal reasoning.
+
+\n
+
+When we examine a system from the inside we do it at design time, that is, during the phase of system construction.
+For example, reasoning about the source code of a system's component is an activity carried out at design time.
+Modern IDEs blur the line between design time and compile time, seemlessly integrating the compilation process into design time in order to increase developer productivity.
+This allows software engineers to benefit from messages signaled by a compiler, making a great contribution to improvements in informal reasoning.
+Therefore, delegating as much system validation as possible to a compiler will result into more reliable systems.
 
 \section{System evolvability}
 % link this to "informal reasoning" (out of the tar pit)
@@ -75,7 +94,7 @@ The underlying assumption is that software is being developed in a compile time 
 However, given the general purpose nature of modern programming languages, this assumption is not always true.
 There is a lack of a language-level abstraction that could be used as domain model metadata, that carries type information, to reference the conceptual model.
 This limitation forces software engineers to use textual string representations instead that are "hard-coded" into the program.
-This is known to be unreliable because a compiler can't validate the contents of a string, thus a program deemed valid by a compiler might contain incorrect metadata that results in a run-time error.
+This is known to be unreliable because a compiler can't validate the contents of a string, thus a program deemed valid by a compiler might contain incorrect metadata that results in a runtime error.
 Although, were the metadata represented in the form of a meta-model instead, all rules of compile time validation would be applicable to it.
 Moreover, any modification to the domain model would be reflected in the meta-model.
 Therefore, it would be possible to efficiently track the related components in need of modification at design time due to messages signaled by a compiler.
@@ -114,7 +133,7 @@ Consequently, each such occurence of hard-coded metadata must be manually locate
 
 \n
 
-It is true that using raw strings to construct SQL queries is a bad practice and alternative approaches have been developed, such as ORM\footnote{Object-Relational Mapping (ORM) is a technique used to interact with a database through an interface in object-oriented paradigm.} frameworks.
+It is true that using raw strings to construct SQL queries is a bad practice and alternative approaches have been developed, such as ORM frameworks.
 However, the core issue still remains unsolved, as demonstrated by the following example.
 
 \begin{listing}[H]
@@ -166,15 +185,18 @@ Trident Genesis (TG) is a software development technology, which has been develo
 TG fits well into the definition of domain-driven development, as it shares the common language of domain modeling, speaking in terms of domain entities and their relationships.
 
 \section {Qualitative research}
-To assess the extent to which the stated objectives were achieved the experimental component of this work is carried out by employing an approach of qualitative research.
-The experiments focus on a small number of participants who are a part of the research field.
+In order to assess the extent to which the stated objectives were achieved the experimental component of this work is carried out by employing an approach of qualitative research.
+The applictation of qualitative reserach to the field of software engineering is discussed by Hazzan \& Dubinsky \cite{hazzan}.
+
+\n
+
+The conducted experiments involve a focus group of select software engineers from the industry, who are practicing domain-driven development as their main software design approach, making them ideal candidates to test our main hypotheses.
 We use a questionnaire as a main data gathering tool.
-%TODO
+
 \n
 
 Richard Pawson \cite{pawson}'s work is one great example of an application of qualitative research methods to the field of software engineering.
 
-% TODO more detailed description of each chapter
 \section{Structure}
 
 This work is structured in the following way: 
