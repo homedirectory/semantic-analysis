@@ -1,4 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
-    \PYG{c+c1}{// error: The method cost() is undefined for the type VehicleMetaModel}
-    \PYG{n}{person}\PYG{p}{.}\PYG{n+na}{vehicle}\PYG{p}{(}\PYG{p}{)}\PYG{p}{.}\PYG{esc}{\textcolor{red}{\uwave{\textcolor{black}{cost()}}}}\PYG{p}{,}
-\end{Verbatim}

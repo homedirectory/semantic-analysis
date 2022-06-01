@@ -24,7 +24,7 @@ Consider the banking example illustrated in the following UML class diagram:
 Here the conceptual schema consists of two domain entities.
 Both of them are characterized by specific attributes that describe their structure.
 And it is a common occurence that the underlying structure of an entity might undergo some kind of modification.
-For example, consider the diagram below that introduces a new attribute to the \texttt{Account} entity, namely, its creation date:
+For example, consider the diagram in Figure \ref{fig:bank1} that introduces a new attribute to the \texttt{Account} entity, namely, its creation date:
 
 \begin{figure}[H]\centering
     \includegraphics[scale=0.65]{images/banking1.drawio.png}
@@ -59,9 +59,10 @@ In our example it would be expected that the validation mechanism reports that t
 \section{Domain-driven design and its terminology}
 Domain-driven design, a term coined by Eric Evans \cite{ddd}, is an approach to conceptual modeling of a specific business domain.
 Its main aim is construction of a domain model, which translates to a conceptual model of the domain.
-At the heart of domain-driven design one of the basic building blocks is an \textit{entity}, that is, a domain object defined primarily by its identity.
-We use the term \textit{entity} interchangeably with the term \textit{concept} assuming that the concept has an identity. 
+At the core of domain-driven design one of the basic building blocks is an \textit{entity}, that is, a domain object defined primarily by its identity.
+We use the term \textit{entity} interchangeably with the term \textit{concept} (assuming that the concept has an identity). 
 Every entity is characterized (but not necessarily identified) by its \textit{properties} in the same way that every concept is characterized by its \textit{attributes}.
+The notion of domain-driven design is important since it enables an individual to think about systems design in terms of domain models.
 
 \section{Java programming language}
 Java \cite{java} is a compiled, high-level, class-based, object-oriented programming language.
@@ -157,4 +158,4 @@ It is important to mention that step 1 may differ across compiler implementation
 
 \n
 
-The built-in annotation processing API in Java has a rich collection of types that model the source language itself, equipping programmers with a powerful abstraction to analyze the syntax tree.\footnote{\texttt{javax.annotation.processing -- \url{https://docs.oracle.com/javase/8/docs/api/javax/annotation/processing/package-summary.html}}}
+The built-in annotation processing API in Java\footnote{\texttt{javax.annotation.processing -- \url{https://docs.oracle.com/javase/8/docs/api/javax/annotation/processing/package-summary.html}}} has a rich collection of types that model the source language itself, equipping programmers with a powerful abstraction to analyze the syntax tree.

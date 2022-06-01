@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{nameOf}\PYG{p}{(}\PYG{n}{Person}\PYG{p}{.}\PYG{n+na}{class}\PYG{p}{,} \PYG{n}{Person}\PYG{p}{::}\PYG{n}{getName}\PYG{p}{)} \PYG{c+c1}{// \PYGZdq{}name\PYGZdq{}}
-\end{Verbatim}

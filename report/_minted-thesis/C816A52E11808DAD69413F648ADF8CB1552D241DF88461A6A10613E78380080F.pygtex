@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{class} \PYG{n+nc}{Book} \PYG{p}{\PYGZob{}}
-    \PYG{k}{public} \PYG{k+kt}{string} \PYG{n}{title} \PYG{p}{\PYGZob{}} \PYG{k}{get}\PYG{p}{;} \PYG{k}{set}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\PYG{n}{nameof}\PYG{p}{(}\PYG{n}{Book}\PYG{p}{.}\PYG{n}{title}\PYG{p}{)} \PYG{c+c1}{// \PYGZdq{}title\PYGZdq{}}
-\end{Verbatim}
